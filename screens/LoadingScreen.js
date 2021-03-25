@@ -3,7 +3,7 @@ import React from 'react';
 import { StyleSheet, Text, View , SafeAreaView} from 'react-native';
 import styles from './components/style';
 
-export default function App() {
+const LoadingScreen = () => {
   return (
     <SafeAreaView>
       <TouchableOpacity>
@@ -12,3 +12,6 @@ export default function App() {
     </SafeAreaView>
   );
 }
+
+
+export default LoadingScreen;
