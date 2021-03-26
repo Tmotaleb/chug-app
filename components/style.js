@@ -20,15 +20,15 @@ const splash = StyleSheet.create({
 });
 
 
-const boarding = StyleSheet.create({
+const boardingCSS = StyleSheet.create({
   container : {
     flex: 1,
     alignItems: 'center',
     justifyContent: 'center',
-    backgroundColor: 'lightblue'
+    backgroundColor: 'pink'
   }
 })
 
 
-export {splash, boarding};
+export {splash, boardingCSS};
 
