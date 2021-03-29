@@ -1,12 +1,12 @@
 import { StatusBar } from 'expo-status-bar';
 import React from 'react';
-import { StyleSheet, Text, View , SafeAreaView} from 'react-native';
+import { StyleSheet, Text, View , SafeAreaView, Button} from 'react-native';
 
 
 const HomePage = () => {
   return (
     <SafeAreaView>
-      <Text>Hello</Text>
+      <Button title='Next'></Button>
     </SafeAreaView>
   );
 }

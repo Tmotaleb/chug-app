@@ -20,14 +20,14 @@ const OnBoardingScreen = ({navigation}) => {
 
   // const Dots = ({selected}) => {
   //   let backgroundColor;
-  //   backgroundColor= selected ? 'rgba(0, 0, 0, 0.8)' : 'rgba(0, 0, 0, 0.3)' ;
+  //   backgroundColor= selected ? 'rgba(0, 0, 0, 0.8)' : 'rgba(0, 0, 0, 0.2)' ;
 
   //   return (
   //     <View
   //       style={{
-  //         width: 5,
-  //         height: 5,
-  //         marginHorizontal: 3,
+  //         width: 7,
+  //         height: 7,
+  //         marginHorizontal: 10,
   //         backgroundColor
   //       }}
 
@@ -35,17 +35,34 @@ const OnBoardingScreen = ({navigation}) => {
   //   )
   // }
 
+  const Next = ({...props}) => {
+    return (
+    <TouchableOpacity
+      style={{marginHorizontal:20}}
+      {...props}
+    >
+      <Text
+      style={{
+        fontSize:16
+      }}
+      >Next</Text>
+  </TouchableOpacity>
+    )
+  }
+
 
   return (
     <Onboarding
      //customized button
     DoneButtonComponent={Done}
     // DotComponent={Dots}
+    NextButtonComponent={Next}
 
+    bottomBarHighlight = {false}
     //Does not allow users to view the onboarding screen
-    onSkip={()=> navigation.replace('HomePage')}
+    onSkip={()=> navigation.replace('PersonalInfo')}
     //Directs users to the Home Screen
-    onDone={()=> navigation.navigate('HomePage')}
+    onDone={()=> navigation.navigate('PersonalInfo')}
     pages={[
       {
         backgroundColor: 'pink',
@@ -54,13 +71,13 @@ const OnBoardingScreen = ({navigation}) => {
         subtitle: 'Done with React Native Onboarding Swiper',
       },
       {
-        backgroundColor: 'blue',
+        backgroundColor: 'lightblue',
         image: <Image source={require('../assets/images/onboarding-img2.png')} />,
         title: 'Onboarding',
         subtitle: 'Done with React Native Onboarding Swiper',
       },
       {
-        backgroundColor: '#fff',
+        backgroundColor: '#b19cd9',
         image: <Image source={require('../assets/images/onboarding-img3.png')} />,
         title: 'Onboarding',
         subtitle: 'Done with React Native Onboarding Swiper',
