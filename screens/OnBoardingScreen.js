@@ -4,6 +4,7 @@ import { StyleSheet, Text, View, SafeAreaView, Image, TouchableOpacity} from 're
 import {boardingCSS} from '../components/style';
 import Onboarding from 'react-native-onboarding-swiper';
 
+
 const OnBoardingScreen = ({navigation}) => {
 
   //To Customize a property (i.e Button) refer below

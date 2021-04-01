@@ -1,7 +1,8 @@
 import { StatusBar } from 'expo-status-bar';
 import React, {useState} from 'react';
-import { Dimensions, Text, View , SafeAreaView, TouchableOpacity, Switch, Image} from 'react-native';
+import { Dimensions, Text, View , SafeAreaView, TouchableOpacity, Switch, Image, ScrollView} from 'react-native';
 import {personalCSS} from '../components/style';
+import GenderPicker from './GenderPicker';
 
 
 // const { width } = Dimensions.get("window");
@@ -25,11 +26,12 @@ const PersonalParameters = () => {
        <View style={personalCSS.box2}>
         <Image source={require('../assets/images/app-blue.png')} style={personalCSS.image2}/>
 
-      <View style={personalCSS.box3}>
+      <ScrollView style={personalCSS.box3}>
         <View style={personalCSS.innerBox3}>
-          <View style={personalCSS.parameters_view}>
+          {/* <View style={personalCSS.parameters_view}>
             <Text style={personalCSS.parameters_text}>Gender</Text>
-          </View>
+          </View> */}
+            <GenderPicker/>
           <View style={personalCSS.parameters_view}>
             <Text style={personalCSS.parameters_text}>Age</Text>
           </View>
@@ -50,7 +52,7 @@ const PersonalParameters = () => {
             <Text style={personalCSS.parameters_text}>Apple Health</Text>
           </View>
         </View>
-      </View>
+      </ScrollView>
       <View style={personalCSS.bottomBar}>
         {/* <TouchableOpacity>
           <Text>Next</Text>

@@ -6,7 +6,8 @@ import { createStackNavigator } from '@react-navigation/stack';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import HomePage from './screens/HomePage';
 import OnBoardingScreen from './screens/OnBoardingScreen';
-import PersonalParameters from './screens/PersonalParameters'
+import PersonalParameters from './screens/PersonalParameters';
+import ModalPicker from './screens/ModalPicker'
 
 const AppStack = createStackNavigator();
 
@@ -49,6 +50,7 @@ export default function App() {
           <AppStack.Screen name='OnboardingScreen' component={OnBoardingScreen}/>
           {/* <AppStack.Screen name='HomePage' component={HomePage}/> */}
           <AppStack.Screen name='PersonalInfo' component={PersonalParameters}/>
+          {/* <AppStack.Screen name='ModalPicker' component={ModalPicker}/> */}
         </AppStack.Navigator>
       </NavigationContainer>
   )

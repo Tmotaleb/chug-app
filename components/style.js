@@ -121,8 +121,17 @@ const personalCSS = StyleSheet.create({
     justifyContent: 'space-between',
     flexDirection: 'row',
     marginHorizontal: 30,
-    backgroundColor: 'grey',
-    borderRadius: 15
+    backgroundColor: 'pink',
+    borderRadius: 15,
+
+    shadowColor: "#000",
+    shadowOffset: {
+      width: 0,
+      height: 2,
+    },
+    shadowOpacity: 0.23,
+    shadowRadius: 2.62,
+    elevation: 4,
   },
   parameters_text: {
     padding: 10,
