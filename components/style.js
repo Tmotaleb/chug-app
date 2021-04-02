@@ -1,6 +1,5 @@
 import {StyleSheet, Dimensions} from 'react-native';
 
-
 const splash = StyleSheet.create({
   box: {
         flex: 1,
@@ -9,17 +8,8 @@ const splash = StyleSheet.create({
         height: '100%',
         position: 'relative'
 
-      },
-  // inner: {
-  //   width: '100%',
-  //   height: '100%',
-  //   backgroundColor:'darkblue',
-  //   position: 'absolute',
-  //   borderTopLeftRadius: 195,
-  //   borderTopRightRadius: 195,
-  // }
+      }
 });
-
 
 const boardingCSS = StyleSheet.create({
   container : {
@@ -30,7 +20,6 @@ const boardingCSS = StyleSheet.create({
   }
 })
 
-
 const { width } = Dimensions.get("window");
 const aspectRatio = 647 / 970;
 const height = width * aspectRatio;
@@ -38,29 +27,12 @@ const height = width * aspectRatio;
 const personalCSS = StyleSheet.create({
   container: {
     flex: 1,
-    // justifyContent: 'space-between',
-    // flexDirection: 'column',
     backgroundColor: '#364d8d'
-
-    // padding: 200
-    // alignItems: 'center',
-    // justifyContent: 'center',
-    // backgroundColor: 'lightgrey'
   },
   box1: {
     overflow:'hidden',
     height: height * 0.51,
     borderBottomLeftRadius:70,
-    // height: 180,
-    // padding:10,
-    // backgroundColor: '#f2bfda',
-    // marginBottom: 10,
-    // alignItems: 'center',
-    // justifyContent: 'center',
-    // marginVertical: 15
-    // overflow: 'hidden',
-    // height: height * 0.61,
-    // overflow: 'hidden',
   },
   image1: {
     height: height,
@@ -70,8 +42,6 @@ const personalCSS = StyleSheet.create({
   box2: {
     flex: 1,
     overflow: 'hidden',
-
-
   },
   image2: {
     ...StyleSheet.absoluteFillObject,
@@ -83,31 +53,12 @@ const personalCSS = StyleSheet.create({
     borderRadius: 70,
     borderTopLeftRadius:0,
     backgroundColor: 'white',
-    flex: 1,
-    // alignItems: 'center',
-    // justifyContent: 'center',
-    // flexDirection: 'column'
+    flex: 1
   },
-
   bottomBar: {
     height: 90,
     backgroundColor: '#364d8d'
   },
-
-  // text: {
-  //   fontSize: 25,
-  //   fontWeight: 'bold'
-  //   // fontFamily: 'Cochin'
-  // },
-
-  // box1: {
-  //   flex: 2,
-
-
-  //   // flexDirection: 'column'
-  //   // display: 'inline-flex',
-  //   // flexWrap: 'wrap'
-  // },
   innerBox3: {
     flex:1,
     marginTop: 30
@@ -117,13 +68,11 @@ const personalCSS = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     marginBottom: 15,
-    // marginVertical: 20,
     justifyContent: 'space-between',
     flexDirection: 'row',
     marginHorizontal: 30,
     backgroundColor: 'pink',
     borderRadius: 15,
-
     shadowColor: "#000",
     shadowOffset: {
       width: 0,
@@ -137,50 +86,41 @@ const personalCSS = StyleSheet.create({
     padding: 10,
     fontSize: 25,
     fontWeight: 'bold'
-  },
-  // toggle: {
-
-  // }
-
-
-  // gender: {
-  //   // flex: 1,
-  //   backgroundColor: 'yellow',
-  //   height: 90,
-  //   alignItems: 'center',
-  //   justifyContent: 'center',
-  //   marginBottom: 25,
-  // },
-  // age: {
-  //   // flex: 2,
-  //   backgroundColor: '#adeddc',
-  //   height: 90,
-  //   alignItems: 'center',
-  //   justifyContent: 'center',
-  //   marginBottom: 25,
-  // },
-  // weight: {
-  //   // flex: 3,
-  //   backgroundColor: '#add6ed',
-  //   height: 90,
-  //   alignItems: 'center',
-  //   justifyContent: 'center',
-  //   marginBottom: 25,
-  // },
-  // activity: {
-  //   // flex: 4,
-  //   backgroundColor: '#f2d5bf',
-  //   height: 90,
-  //   alignItems: 'center',
-  //   justifyContent: 'center',
-  //   marginBottom: 25,
-  // }
-  // box2: {
-  //   // flex:3
-  //   backgroundColor: 'grey',
-  // }
+  }
 })
 
 
-export {splash, boardingCSS, personalCSS};
+const picker = StyleSheet.create({
+  container : {
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  pickerContainer : {
+    height: 350,
+    width: '100%',
+    backgroundColor: 'white',
+    borderRadius: 30,
+    color: 'white',
+    padding: 5
+  },
+  header: {
+    justifyContent: 'space-between',
+    flexDirection: 'row',
+    alignItems: 'center',
+    backgroundColor: 'transparent',
+    padding: 10,
+    borderBottomColor: 'grey',
+    borderBottomWidth: 2,
+    color: 'white'
+  },
+  txt: {
+    fontSize: 18,
+    fontWeight: 'bold',
+    color: '#04303d'
+  }
+})
+
+
+export {splash, boardingCSS, personalCSS, picker};
 

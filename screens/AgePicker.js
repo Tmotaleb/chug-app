@@ -16,10 +16,16 @@ import { NeuInput, NeuView } from 'react-native-neu-element';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import {picker} from '../components/style';
 
-const GenderPicker = ({value}) => {
+const AgePicker = ({value}) => {
 
-  const items = ['Female', 'Male', 'None'];
+  const items =[];
+
+    for (var i = 4; i <= 100; i++) {
+      items.push(i.toString())
+    }
+
   const [isModalVisible, setModalVisible] = useState(false);
+
   const [pickerValue, setPickerValue] = useState('');
 
   const toggleModal = () => {
@@ -42,7 +48,7 @@ const GenderPicker = ({value}) => {
       <View style={personalCSS.parameters_view}>
         <Text
           style={personalCSS.parameters_text}>
-          Gender
+          Age
         </Text>
         <View style={{padding:10}}>
           <NeuInput
@@ -99,4 +105,4 @@ const GenderPicker = ({value}) => {
 }
 
 
-export default GenderPicker;
+export default AgePicker;
