@@ -16,13 +16,9 @@ import { NeuInput, NeuView } from 'react-native-neu-element';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import {picker} from '../components/style';
 
-const AgePicker = ({value}) => {
+const ActivityPicker = ({value}) => {
 
-  const items =[];
-
-    for (var i = 4; i <= 100; i++) {
-      items.push(i.toString())
-    }
+  const items =['Just Sleep', '30 min/week', '1 hour/week', '2 hour/week', '3 hour/week', '4+ hour/week'];
 
   const [isModalVisible, setModalVisible] = useState(false);
 
@@ -49,7 +45,7 @@ const AgePicker = ({value}) => {
       <Image source={require('../assets/images/onboarding-img3.png')} style={picker.img}/>
         <Text
           style={personalCSS.parameters_text}>
-          Age
+          Activity
         </Text>
         <View style={picker.inputBox}>
           <NeuInput
@@ -74,7 +70,7 @@ const AgePicker = ({value}) => {
 
                 <Text
                   style={picker.txt}>
-                  Age
+                  Activity
                 </Text>
 
                 <TouchableOpacity
@@ -106,4 +102,4 @@ const AgePicker = ({value}) => {
 }
 
 
-export default AgePicker;
+export default ActivityPicker;

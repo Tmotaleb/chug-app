@@ -64,7 +64,7 @@ const personalCSS = StyleSheet.create({
     marginTop: 30
   },
   parameters_view: {
-    height: 80,
+    height: 130,
     alignItems: 'center',
     justifyContent: 'center',
     marginBottom: 15,
@@ -88,7 +88,6 @@ const personalCSS = StyleSheet.create({
     fontWeight: 'bold'
   }
 })
-
 
 const picker = StyleSheet.create({
   container : {
@@ -115,9 +114,35 @@ const picker = StyleSheet.create({
     color: 'white'
   },
   txt: {
-    fontSize: 18,
+    fontSize: 20,
     fontWeight: 'bold',
     color: '#04303d'
+  },
+  img: {
+    height: 80,
+    width: 80,
+    borderRadius: 40,
+    shadowOffset: {
+      width: 1,
+      height: 4
+    },
+    shadowOpacity: 1,
+    shadowRadius: 4,
+    shadowColor: '#B7C4DD',
+    marginLeft: 5
+  },
+  inputBox: {
+    marginRight: 15
+  },
+  switch: {
+    shadowOffset: {
+      width: 1,
+      height: 4
+    },
+    shadowOpacity: 1,
+    shadowRadius: 4,
+    shadowColor: '#B7C4DD',
+    marginLeft: 5
   }
 })
 

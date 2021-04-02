@@ -18,7 +18,7 @@ import {picker} from '../components/style';
 
 const GenderPicker = ({value}) => {
 
-  const items = ['Female', 'Male', 'None'];
+  const items = ['Female', 'Male'];
   const [isModalVisible, setModalVisible] = useState(false);
   const [pickerValue, setPickerValue] = useState('');
 
@@ -37,14 +37,28 @@ const GenderPicker = ({value}) => {
     }
   }, [value]);
 
+
+  const renderImage = () => {
+    if (pickerValue === 'Male') {
+      return (
+        <Image source={require('../assets/images/onboarding-img2.png')} style={picker.img}/>
+      )
+    } else {
+      return (
+        <Image source={require('../assets/images/onboarding-img1.png')} style={picker.img}/>
+      )
+    }
+  }
+
   return (
     <TouchableOpacity onPress={toggleModal}>
       <View style={personalCSS.parameters_view}>
+        {renderImage()}
         <Text
           style={personalCSS.parameters_text}>
           Gender
         </Text>
-        <View style={{padding:10}}>
+        <View style={picker.inputBox}>
           <NeuInput
             placeholder={pickerValue}
             color='#eef2f9'
