@@ -36,10 +36,10 @@ const BreastfeedingPicker = ({value}) => {
           style={personalCSS.parameters_text}>
           Breastfeeding
         </Text>
-        <View style={picker.inputBox}>
+        <View style={picker.switchBox}>
           <Switch
-            trackColor={{ false: "#f4f3f4", true: '#15f4ee' }}
-            thumbColor={isEnabled ? "#f4f3f4" : "#f4f3f4"}
+            trackColor={{ false: "#f4f3f4", true: '#2596be' }}
+            thumbColor={isEnabled ? "white" : "white"}
             ios_backgroundColor="#f4f3f4"
             onValueChange={toggleSwitch}
             value={isEnabled}

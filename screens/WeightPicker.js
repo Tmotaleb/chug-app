@@ -1,20 +1,26 @@
 import React, {useState, useEffect} from 'react';
-import {useFocusEffect} from '@react-navigation/native';
 import {
   Text,
   View ,
   TouchableOpacity,
   Image,
-  TextInput} from 'react-native';
+  Pressable,
+  StyleSheet,
+  TextInput,
+  Button} from 'react-native';
 import {personalCSS} from '../components/style';
-import { NeuInput, NeuView } from 'react-native-neu-element';
+import {Picker} from '@react-native-picker/picker';
+import Modal from 'react-native-modal';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import {picker} from '../components/style';
 
 const WeightPicker = ({value}) => {
 
-  const items =['Just Sleep', '30 min/week', '1 hour/week', '2 hour/week', '3 hour/week', '4+ hour/week'];
+  const items =[];
 
+  for (var i = 40; i <= 500; i++) {
+    items.push(i.toString() + ' lb')
+  }
   const [isModalVisible, setModalVisible] = useState(false);
 
   const [pickerValue, setPickerValue] = useState('');
@@ -38,28 +44,70 @@ const WeightPicker = ({value}) => {
     }
   }, [value]);
 
+
   return (
-    <View>
-      <View style={personalCSS.parameters_view}>
-      <Image source={require('../assets/images/onboarding-img3.png')} style={picker.img}/>
+    <TouchableOpacity onPress={toggleModal}>
+      <View style={personalCSS.parameters_view} >
+        <View style={picker.imgContainer}>
+          <Image source={require('../assets/images/onboarding-img3.png')} style={picker.img}/>
+        </View>
         <Text
           style={personalCSS.parameters_text}>
           Weight
         </Text>
-        <TouchableOpacity style={picker.inputBox}>
-          <NeuInput
-            placeholder='Enter weight'
-            color='#eef2f9'
-            height={40}
-            width={70}
-            borderRadius={16}
-            onChangeText={setPickerValue}
-            value={pickerValue}  //user should only be able to input numbers
-            maxLength={3}   //length should be only 3
-            />
-        </TouchableOpacity>
+
+          <View style={picker.inputBox}>
+            <TextInput
+              style={picker.textInput}
+              placeholderTextColor='#2596be'
+              placeholder={pickerValue}
+              onChangeText={pickerValue}
+              caretHidden={true}
+              editable={false}
+              />
+          </View>
+
+        <Modal isVisible={isModalVisible}>
+          <View style={picker.container}>
+            <View style={picker.pickerContainer}>
+              <View style={picker.header}>
+                <TouchableOpacity onPress={toggleModal}>
+                  <Icon
+                    name='close'
+                    size={30}
+                    color='grey'/>
+                </TouchableOpacity>
+
+                <Text
+                  style={picker.txt}>
+                  Weight
+                </Text>
+
+                <TouchableOpacity
+                  onPress={()=> {
+                    onSelect(pickerValue);
+                    toggleModal();
+                    }}>
+                  <Icon
+                    name='done'
+                    size={30}
+                    color='grey'/>
+                </TouchableOpacity>
+              </View>
+
+              <Picker
+                selectedValue={pickerValue}
+                onValueChange={(value)=> setPickerValue(value)}
+              >
+                {items.map((item)=> (
+                  <Picker.Item value={item} label={item} color='#04303d'/>
+                ))}
+              </Picker>
+            </View>
+          </View>
+        </Modal>
       </View>
-    </View>
+    </TouchableOpacity>
   )
 }
 

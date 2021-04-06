@@ -12,20 +12,17 @@ import {
 import {personalCSS} from '../components/style';
 import {Picker} from '@react-native-picker/picker';
 import Modal from 'react-native-modal';
-import { NeuInput, NeuView } from 'react-native-neu-element';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import {picker} from '../components/style';
 
 const AgePicker = ({value}) => {
-
   const items =[];
 
-    for (var i = 4; i <= 100; i++) {
-      items.push(i.toString())
-    }
+  for (var i = 4; i <= 100; i++) {
+    items.push(i.toString())
+  }
 
   const [isModalVisible, setModalVisible] = useState(false);
-
   const [pickerValue, setPickerValue] = useState('');
 
   const toggleModal = () => {
@@ -45,21 +42,25 @@ const AgePicker = ({value}) => {
 
   return (
     <TouchableOpacity onPress={toggleModal}>
-      <View style={personalCSS.parameters_view}>
-      <Image source={require('../assets/images/onboarding-img3.png')} style={picker.img}/>
+      <View style={personalCSS.parameters_view} >
+        <View style={picker.imgContainer}>
+          <Image source={require('../assets/images/onboarding-img3.png')} style={picker.img}/>
+        </View>
         <Text
           style={personalCSS.parameters_text}>
           Age
         </Text>
-        <View style={picker.inputBox}>
-          <NeuInput
-            placeholder={pickerValue}
-            color='#eef2f9'
-            height={40}
-            width={70}
-            borderRadius={16}
-            />
-        </View>
+
+          <View style={picker.inputBox}>
+            <TextInput
+              style={picker.textInput}
+              placeholderTextColor='#2596be'
+              placeholder={pickerValue}
+              onChangeText={pickerValue}
+              caretHidden={true}
+              editable={false}
+              />
+          </View>
 
         <Modal isVisible={isModalVisible}>
           <View style={picker.container}>
@@ -104,6 +105,5 @@ const AgePicker = ({value}) => {
     </TouchableOpacity>
   )
 }
-
 
 export default AgePicker;

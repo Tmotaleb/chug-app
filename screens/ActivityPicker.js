@@ -18,7 +18,7 @@ import {picker} from '../components/style';
 
 const ActivityPicker = ({value}) => {
 
-  const items =['Just Sleep', '30 min/week', '1 hour/week', '2 hour/week', '3 hour/week', '4+ hour/week'];
+  const items =['Just Sleep', '30 min/wk', '1 hour/week', '2 hour/week', '3 hour/week', '4+ hour/week'];
 
   const [isModalVisible, setModalVisible] = useState(false);
 
@@ -41,63 +41,67 @@ const ActivityPicker = ({value}) => {
 
   return (
     <TouchableOpacity onPress={toggleModal}>
-      <View style={personalCSS.parameters_view}>
-      <Image source={require('../assets/images/onboarding-img3.png')} style={picker.img}/>
-        <Text
-          style={personalCSS.parameters_text}>
-          Activity
-        </Text>
+    <View style={personalCSS.parameters_view} >
+      <View style={picker.imgContainer}>
+        <Image source={require('../assets/images/onboarding-img3.png')} style={picker.img}/>
+      </View>
+      <Text
+        style={personalCSS.parameters_text}>
+        Activity
+      </Text>
+
         <View style={picker.inputBox}>
-          <NeuInput
+          <TextInput
+            style={picker.textInput}
+            placeholderTextColor='#2596be'
             placeholder={pickerValue}
-            color='#eef2f9'
-            height={40}
-            width={70}
-            borderRadius={16}
+            onChangeText={pickerValue}
+            caretHidden={true}
+            editable={false}
             />
         </View>
 
-        <Modal isVisible={isModalVisible}>
-          <View style={picker.container}>
-            <View style={picker.pickerContainer}>
-              <View style={picker.header}>
-                <TouchableOpacity onPress={toggleModal}>
-                  <Icon
-                    name='close'
-                    size={30}
-                    color='grey'/>
-                </TouchableOpacity>
+      <Modal isVisible={isModalVisible}>
+        <View style={picker.container}>
+          <View style={picker.pickerContainer}>
+            <View style={picker.header}>
+              <TouchableOpacity onPress={toggleModal}>
+                <Icon
+                  name='close'
+                  size={30}
+                  color='grey'/>
+              </TouchableOpacity>
 
-                <Text
-                  style={picker.txt}>
-                  Activity
-                </Text>
+              <Text
+                style={picker.txt}>
+                Activity
+              </Text>
 
-                <TouchableOpacity
-                  onPress={()=> {
-                    onSelect(pickerValue);
-                    toggleModal();
-                    }}>
-                  <Icon
-                    name='done'
-                    size={30}
-                    color='grey'/>
-                </TouchableOpacity>
-              </View>
-
-              <Picker
-                selectedValue={pickerValue}
-                onValueChange={(value)=> setPickerValue(value)}
-              >
-                {items.map((item)=> (
-                  <Picker.Item value={item} label={item} color='#04303d'/>
-                ))}
-              </Picker>
+              <TouchableOpacity
+                onPress={()=> {
+                  onSelect(pickerValue);
+                  toggleModal();
+                  }}>
+                <Icon
+                  name='done'
+                  size={30}
+                  color='grey'/>
+              </TouchableOpacity>
             </View>
+
+            <Picker
+              selectedValue={pickerValue}
+              onValueChange={(value)=> setPickerValue(value)}
+            >
+              {items.map((item)=> (
+                <Picker.Item value={item} label={item} color='#04303d'/>
+              ))}
+            </Picker>
           </View>
-        </Modal>
-      </View>
-    </TouchableOpacity>
+        </View>
+      </Modal>
+    </View>
+  </TouchableOpacity>
   )
 }
 
