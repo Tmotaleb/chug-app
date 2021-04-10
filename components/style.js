@@ -21,9 +21,8 @@ const boardingCSS = StyleSheet.create({
   }
 })
 
-const { width } = Dimensions.get("window");
-const aspectRatio = 647 / 970;
-const height = width * aspectRatio;
+var { width, height } = Dimensions.get("window");
+
 
 const personalCSS = StyleSheet.create({
   container: {
@@ -34,6 +33,7 @@ const personalCSS = StyleSheet.create({
 
   box1: {
     flex: 1,
+    backgroundColor: 'green'
 
   },
   bottomBar: {
@@ -41,17 +41,15 @@ const personalCSS = StyleSheet.create({
     // backgroundColor: "#000000b0"
   },
   box2: {
-    // flex:1,
-    // marginTop: 30,
-    // backgroundColor: '#43a5ca',
+    marginTop: 20
   },
   intakeBox: {
     marginTop: 30,
-    textAlign: 'justify'
+    textAlign: 'justify',
+    backgroundColor: 'pink'
   },
 
   parameters_view: {
-
     height: 100,
     alignItems: 'center',
     justifyContent: 'center',
@@ -61,8 +59,6 @@ const personalCSS = StyleSheet.create({
     marginHorizontal: 10,
     borderRadius: 5,
     backgroundColor: 'rgba(248,248,248, 0.8)',
-
-
 
     // shadowOffset: {
     //     width: 5,
@@ -177,16 +173,40 @@ const picker = StyleSheet.create({
 
 const intakeCSS = StyleSheet.create({
   container: {
-
+    flex: 1,
+    justifyContent: 'center',
+    backgroundColor: 'white',
+    // flexDirection: 'column'
   },
-  box1: {
-
+  Box1: {
+    backgroundColor: 'green'
   },
-  box2: {
+  Box2: {
+    backgroundColor: 'pink'
+  },
 
+  textBox: {
+    flex: 1,
+    justifyContent:'center',
+    alignItems: 'center',
+    backgroundColor:'lightblue',
+    width: '100%'
   },
   bottomBar: {
-      height: 60,
+    height: 60,
+  },
+
+  title: {
+    fontSize: 30,
+    fontWeight: 'bold',
+    color:'#00CCFF',
+    textAlign: "center",
+    textShadowColor: 'rgba(0, 0, 0, 0.1)',
+    textShadowOffset: {width: -1, height: 1},
+    textShadowRadius: 2,
+    marginVertical: 30,
+    marginLeft: 30,
+    alignSelf: 'flex-start',
   }
 })
 
