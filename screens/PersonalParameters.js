@@ -4,6 +4,7 @@ import { Dimensions, Text, View , SafeAreaView, TouchableOpacity, Switch, Image,
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import {personalCSS} from '../components/style';
+import NameInput from './NameInput';
 import GenderPicker from './GenderPicker';
 import AgePicker from './AgePicker';
 import ActivityPicker from './ActivityPicker';
@@ -32,47 +33,44 @@ const PersonalParameters = ({navigation}) => {
   //   )
   // }
 
-useEffect(() => {
-  (async () => await Font.loadAsync({
-    ComfortaaRegular: require('../assets/fonts/Comfortaa-Regular.ttf'),
-    ComfortaaBold: require('../assets/fonts/Comfortaa-Bold.ttf'),
-    ComfortaaSemiBold : require('../assets/fonts/Comfortaa-SemiBold.ttf'),
-    ComfortaaMedium : require('../assets/fonts/Comfortaa-Medium.ttf'),
-    NotoSansRegular: require('../assets/fonts/NotoSansJP-Regular.otf'),
-    NotoSansMedium: require('../assets/fonts/NotoSansJP-Medium.otf'),
-    NotoSansBold: require('../assets/fonts/NotoSansJP-Bold.otf'),
-    MontserratMedium: require('../assets/fonts/Montserrat-Medium.ttf'),
-  }))();
-   }, [])
+// useEffect(() => {
+//   (async () => await Font.loadAsync({
+//     ComfortaaRegular: require('../assets/fonts/Comfortaa-Regular.ttf'),
+//     ComfortaaBold: require('../assets/fonts/Comfortaa-Bold.ttf'),
+//     ComfortaaSemiBold : require('../assets/fonts/Comfortaa-SemiBold.ttf'),
+//     ComfortaaMedium : require('../assets/fonts/Comfortaa-Medium.ttf'),
+//     NotoSansRegular: require('../assets/fonts/NotoSansJP-Regular.otf'),
+//     NotoSansMedium: require('../assets/fonts/NotoSansJP-Medium.otf'),
+//     NotoSansBold: require('../assets/fonts/NotoSansJP-Bold.otf'),
+//     MontserratMedium: require('../assets/fonts/Montserrat-Medium.ttf'),
+//   }))();
+//    }, [])
 
   return (
-    <View style={personalCSS.container}>
+    <SafeAreaView style={personalCSS.container}>
 
-        <View style={personalCSS.box1}>
-          <ImageBackground source={require('../assets/images/Wave-img.png')} style={personalCSS.image1}>
-            <View style={personalCSS.innerBox1}>
-              <Text style={personalCSS.title}>Enter Personal Parameters</Text>
-          </View>
-          </ImageBackground>
-        </View>
+      <View>
+        <Text style={personalCSS.title}>Enter Personal Parameters</Text>
+       </View>
 
-          <ScrollView style={personalCSS.innerBox3}>
-            <GenderPicker/>
-            <AgePicker/>
-            <WeightPicker/>
-            <ActivityPicker/>
-            <PregnantPicker/>
-            <BreastfeedingPicker/>
-            <AppleHealthPicker/>
-          </ScrollView>
+      <ScrollView style={personalCSS.box2}>
+        <NameInput/>
+        <GenderPicker/>
+        <AgePicker/>
+        <WeightPicker/>
+        <ActivityPicker/>
+        <PregnantPicker/>
+        <BreastfeedingPicker/>
+        <AppleHealthPicker/>
+      </ScrollView>
 
 
         <View style={personalCSS.bottomBar}>
-          <TouchableOpacity style={{alignSelf: 'flex-end', padding: 20}} onPress={()=> navigation.navigate('HomePage')}>
+          <TouchableOpacity style={{alignSelf: 'flex-end', padding: 20}} onPress={()=> navigation.navigate('PersonalIntake')}>
             <Text style={{color: 'black', fontSize: 18}}>Next</Text>
           </TouchableOpacity>
         </View>
-    </View>
+    </SafeAreaView>
   );
 }
 

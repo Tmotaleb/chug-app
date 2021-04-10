@@ -8,6 +8,7 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import HomePage from './screens/HomePage';
 import OnBoardingScreen from './screens/OnBoardingScreen';
 import PersonalParameters from './screens/PersonalParameters';
+import PersonalIntake from './screens/PersonalIntake';
 
 const AppStack = createStackNavigator();
 
@@ -49,6 +50,8 @@ export default function App() {
         >
           <AppStack.Screen name='OnboardingScreen' component={OnBoardingScreen}/>
           <AppStack.Screen name='PersonalInfo' component={PersonalParameters}/>
+          <AppStack.Screen name='PersonalIntake' component={PersonalIntake}/>
+
           <AppStack.Screen name='HomePage' component={HomePage}/>
           {/* <AppStack.Screen name='ModalPicker' component={ModalPicker}/> */}
         </AppStack.Navigator>

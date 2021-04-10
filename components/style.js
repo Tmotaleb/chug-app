@@ -28,87 +28,83 @@ const height = width * aspectRatio;
 const personalCSS = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#F8F8F8',
-  },
-  box1: {
-    height: height * 0.41
-  },
-  innerBox1: {
-    position: 'absolute',
-    top: 0,
-    left: 0,
-    right: 0,
-    bottom: 100,
     justifyContent: 'center',
-    alignItems: 'center',
-  },
-  image1: {
-    height: height,
-    width: width,
-  },
-  box3: {
-    flex: 1
-  },
-  bottomBar: {
-    height: 90,
     backgroundColor: 'white'
   },
-  innerBox3: {
-    flex:1,
-    marginTop: 30,
-    backgroundColor: '#F8F8F8',
+
+  box1: {
+    flex: 1,
+
   },
+  bottomBar: {
+    height: 60,
+    // backgroundColor: "#000000b0"
+  },
+  box2: {
+    // flex:1,
+    // marginTop: 30,
+    // backgroundColor: '#43a5ca',
+  },
+  intakeBox: {
+    marginTop: 30,
+    textAlign: 'justify'
+  },
+
   parameters_view: {
+
     height: 100,
     alignItems: 'center',
     justifyContent: 'center',
     marginTop: 15,
     justifyContent: 'space-between',
     flexDirection: 'row',
-    // marginHorizontal: 30,
-    backgroundColor: 'white',
+    marginHorizontal: 10,
     borderRadius: 5,
+    backgroundColor: 'rgba(248,248,248, 0.8)',
 
-    shadowOffset: {
-        width: 5,
-        height: 10
-    },
-    shadowOpacity: 1,
-    shadowRadius: 9,
-    shadowColor: '#E0E0E0'
+
+
+    // shadowOffset: {
+    //     width: 5,
+    //     height: 10
+    // },
+    // shadowOpacity: 1,
+    // shadowRadius: 9,
+    // shadowColor: '#E0E0E0'
   },
   title: {
     fontSize: 30,
-    color:'white',
-    textShadowColor: 'rgba(0, 0, 0, 0.2)',
+    fontWeight: 'bold',
+    color:'#00CCFF',
+    textAlign: "center",
+    textShadowColor: 'rgba(0, 0, 0, 0.1)',
     textShadowOffset: {width: -1, height: 1},
-    textShadowRadius: 5,
-    fontFamily: 'NotoSansBold',
+    textShadowRadius: 2,
+    marginTop: 20
+
   },
   parameters_text: {
     padding: 10,
     fontSize: 25,
-    // fontWeight: '900',
-    fontFamily: 'NotoSansMedium',
   },
-  topShadow:{
-    shadowOffset: {
-        width: -1,
-        height: -1
-    },
-    shadowOpacity: 1,
-    shadowRadius: 9,
-    shadowColor: '#FBFFFF'
-    },
-    bottomShadow:{
-        shadowOffset: {
-            width: 1,
-            height: 1
-        },
-        shadowOpacity: 1,
-        shadowRadius: 9,
-        shadowColor: '#E0E0E0'
-    },
+  // topShadow:{
+  //   shadowOffset: {
+  //       width: -1,
+  //       height: -1
+  //   },
+  //   shadowOpacity: 1,
+  //   shadowRadius: 9,
+  //   shadowColor: '#FBFFFF'
+  //   },
+  //   bottomShadow:{
+  //       shadowOffset: {
+  //           width: 1,
+  //           height: 1
+  //       },
+  //       shadowOpacity: 1,
+  //       shadowRadius: 9,
+  //       shadowColor: '#E0E0E0'
+  //   },
 })
 
 const picker = StyleSheet.create({
@@ -158,17 +154,17 @@ const picker = StyleSheet.create({
   },
   inputBox: {
     marginRight: 20,
+
   },
   textInput: {
-    backgroundColor: 'white',
-    borderWidth: 1,
-    borderColor: 'white',
-    width: 95,
+    borderBottomWidth: 1,
+    borderBottomColor: '#00CCFF',
+    width: 90,
     height: 40,
     borderRadius: 5,
     textAlign: 'center',
-    fontFamily: 'NotoSansRegular',
     fontSize: 24,
+    color:'white'
   },
   switchBox: {
     marginRight: 25
@@ -177,42 +173,23 @@ const picker = StyleSheet.create({
     marginLeft: 5,
     transform:[{ scaleX: 1.1  }, { scaleY: 1.1 }]
   },
+})
 
-  // inner: {
-  //   backgroundColor: '#f4f8fb',
+const intakeCSS = StyleSheet.create({
+  container: {
 
-  //   alignItems: 'center',
-  //   justifyContent: 'center',
-  //   marginBottom: 15,
-  //   justifyContent: 'space-between',
-  //   flexDirection: 'row',
-  //   marginHorizontal: 30,
-  //   borderRadius: 15,
-  //   borderColor: '#f4f8fb',
-  //   borderWidth: 1,
-  //   height: 130
-  // },
-  // topShadow: {
-  //   shadowOffset: {
-  //     width: -6,
-  //     height: -6
-  //   },
-  //   shadowOpacity: 1,
-  //   shadowRadius: 6,
-  //   shadowColor: '#FBFFFF'
-  // },
-  // bottomShadow: {
-  //   shadowOffset: {
-  //     width: 6,
-  //     height: 6
-  //   },
-  //   shadowOpacity: 1,
-  //   shadowRadius: 6,
-  //   shadowColor: '#B7C4DD'
-  // }
+  },
+  box1: {
 
+  },
+  box2: {
+
+  },
+  bottomBar: {
+      height: 60,
+  }
 })
 
 
-export {splash, boardingCSS, personalCSS, picker};
+export {splash, boardingCSS, personalCSS, picker, intakeCSS};
 

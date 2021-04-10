@@ -20,7 +20,7 @@ import { Ionicons } from '@expo/vector-icons';
 
 const GenderPicker = ({value}) => {
 
-  const items = ['Female', 'Male'];
+  const items = ['None','Female', 'Male'];
   const [isModalVisible, setModalVisible] = useState(false);
   const [pickerValue, setPickerValue] = useState('');
 
@@ -52,6 +52,8 @@ const GenderPicker = ({value}) => {
     }
   }
 
+  console.log(pickerValue)
+
   return (
     <TouchableOpacity onPress={toggleModal}>
       <View style={personalCSS.parameters_view} >
@@ -66,11 +68,11 @@ const GenderPicker = ({value}) => {
           <View style={picker.inputBox}>
             <TextInput
               style={picker.textInput}
-              placeholderTextColor='#2596be'
-              placeholder={pickerValue}
-              onChangeText={pickerValue}
-              caretHidden={true}
-              editable={false}
+            placeholderTextColor='#2596be'
+            placeholder={pickerValue}
+            onChangeText={pickerValue}
+            caretHidden={true}
+            editable={false}
               />
           </View>
 

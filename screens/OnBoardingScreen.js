@@ -10,41 +10,24 @@ const OnBoardingScreen = ({navigation}) => {
   //To Customize a property (i.e Button) refer below
   const Done = ({...props}) => (
     <TouchableOpacity
-      style={{marginHorizontal:10}}
+      style={{padding:20}}
       {...props}
     >
       <Text
-      style={{fontSize:16}}
-      >Done</Text>
+      style={{fontSize:18}}
+      >Next</Text>
     </TouchableOpacity>
   )
-
-  // const Dots = ({selected}) => {
-  //   let backgroundColor;
-  //   backgroundColor= selected ? 'rgba(0, 0, 0, 0.8)' : 'rgba(0, 0, 0, 0.2)' ;
-
-  //   return (
-  //     <View
-  //       style={{
-  //         width: 7,
-  //         height: 7,
-  //         marginHorizontal: 10,
-  //         backgroundColor
-  //       }}
-
-  //     />
-  //   )
-  // }
 
   const Next = ({...props}) => {
     return (
     <TouchableOpacity
-      style={{marginHorizontal:20}}
+      style={{padding:20}}
       {...props}
     >
       <Text
       style={{
-        fontSize:16
+        fontSize:18
       }}
       >Next</Text>
   </TouchableOpacity>
@@ -56,7 +39,8 @@ const OnBoardingScreen = ({navigation}) => {
     <Onboarding
      //customized button
     DoneButtonComponent={Done}
-    // DotComponent={Dots}
+    // DotComponent='false'
+    // showPagination={false}
     NextButtonComponent={Next}
 
     bottomBarHighlight = {false}

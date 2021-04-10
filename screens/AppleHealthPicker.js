@@ -32,7 +32,9 @@ const AppleHealthPicker = ({value}) => {
   return (
     <View>
       <View style={personalCSS.parameters_view}>
-      <Image source={require('../assets/images/onboarding-img3.png')} style={picker.img}/>
+      <View style={picker.imgContainer}>
+        <Image source={require('../assets/images/onboarding-img3.png')} style={picker.img}/>
+      </View>
         <Text
           style={personalCSS.parameters_text}>
           Apple Health
