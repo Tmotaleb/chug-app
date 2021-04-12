@@ -36,7 +36,7 @@ const BreastfeedingPicker = ({value}) => {
     </View>
       <Text
         style={personalCSS.parameters_text}>
-        BreastFeeding
+        Breastfeeding
       </Text>
       <View style={picker.switchBox}>
         <Switch

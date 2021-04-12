@@ -150,6 +150,8 @@ const picker = StyleSheet.create({
   },
   inputBox: {
     marginRight: 20,
+    // borderWidth: 1,
+    // borderColor: 'rgba(248,248,248, 0.8)'
 
   },
   textInput: {

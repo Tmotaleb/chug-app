@@ -50,16 +50,18 @@ const ActivityPicker = ({value}) => {
         Activity
       </Text>
 
-        <View style={picker.inputBox}>
-          <TextInput
-            style={picker.textInput}
-            placeholderTextColor='#2596be'
-            placeholder={pickerValue}
-            onChangeText={pickerValue}
-            caretHidden={true}
-            editable={false}
-            />
-        </View>
+        <Pressable onPress={toggleModal}>
+          <View style={picker.inputBox} pointerEvents='none'>
+            <TextInput
+              style={picker.textInput}
+              placeholderTextColor='#2596be'
+              placeholder={pickerValue}
+              onChangeText={pickerValue}
+              caretHidden={true}
+              editable={false}
+              />
+          </View>
+        </Pressable>
 
       <Modal isVisible={isModalVisible}>
         <View style={picker.container}>
