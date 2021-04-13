@@ -18,14 +18,20 @@ const PersonalParameters = ({navigation, value}) => {
   const [isEnabled, setIsEnabled] = useState(false);
   const toggleSwitch = () => setIsEnabled(previousState => !previousState);
 
-  const [data, setData] = useState(null)
-
-  const getData = (info) => {
+  const [nameData, setNameData] = useState(null);
+  const getName = (info) => {
     console.log(info, 'parent')
-    setData(info)
+    setNameData(info)
   }
 
-  console.log(data, 'data yo')
+  const [genderData, setGenderData] = useState(null)
+  const getGender = (info) => {
+    console.log(info, 'parent')
+    setGenderData(info)
+  }
+
+
+
 // useEffect(() => {
 //   (async () => await Font.loadAsync({
 //     ComfortaaRegular: require('../assets/fonts/Comfortaa-Regular.ttf'),
@@ -48,9 +54,9 @@ const PersonalParameters = ({navigation, value}) => {
        </View>
 
       <ScrollView style={personalCSS.box2}>
-        <NameInput />
+        <NameInput getName={getName}/>
 
-        <GenderPicker getData={getData}/>
+        <GenderPicker getGender={getGender}/>
 
         <AgePicker />
         <WeightPicker />
@@ -62,8 +68,8 @@ const PersonalParameters = ({navigation, value}) => {
 
         <View style={personalCSS.bottomBar}>
           <TouchableOpacity style={{alignSelf: 'flex-end', padding: 20}} onPress={()=> navigation.navigate('PersonalIntake', {
-            genderType: data,
-            otherParams: 'anything i want'
+            genderType: genderData,
+            nameType: nameData
           })}>
             <Text style={{color: 'black', fontSize: 18}}>Next</Text>
           </TouchableOpacity>

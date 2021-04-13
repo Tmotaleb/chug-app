@@ -199,16 +199,19 @@ const intakeCSS = StyleSheet.create({
   },
 
   title: {
-    fontSize: 30,
-    fontWeight: 'bold',
+    fontSize: 16,
+    fontWeight: '500',
     color:'#00CCFF',
     textAlign: "center",
     textShadowColor: 'rgba(0, 0, 0, 0.1)',
     textShadowOffset: {width: -1, height: 1},
     textShadowRadius: 2,
-    marginVertical: 30,
+    // marginTop: 30,
     marginLeft: 30,
     alignSelf: 'flex-start',
+  },
+  titleBox: {
+    marginVertical: 30
   }
 })
 

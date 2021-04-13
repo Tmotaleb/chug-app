@@ -12,9 +12,14 @@ import {
   Button} from 'react-native';
 import {personalCSS} from '../components/style';
 
-const NameInput = () => {
-
+const NameInput = ({getName}) => {
   const [text, setText] = useState('');
+
+  console.log(getName, 'name')
+
+  const nameInfo = () => {
+    getName(text, 'nameInput')
+  }
 
   console.log(text)
   return (
@@ -25,10 +30,11 @@ const NameInput = () => {
           Name
         </Text>
         <TextInput
-          style={{marginRight: 20, borderBottomWidth: 1, borderBottomColor:'#00CCFF', width: '60%', color:'#2596be', fontSize:20,}}
-          placeholder='Type your name here...'
+          style={{ borderBottomWidth: 1, borderBottomColor:'#00CCFF', color:'#2596be', fontSize:20, flex: 1}}
+          placeholder='Type your first name here...'
           onChangeText={text => setText(text)}
           defaultValue={text}
+          onChange={()=> nameInfo()}
         />
 
       </View>

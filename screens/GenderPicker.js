@@ -18,16 +18,16 @@ import Icon from 'react-native-vector-icons/MaterialIcons';
 import {picker} from '../components/style';
 import { Ionicons } from '@expo/vector-icons';
 
-const GenderPicker = ({value, getData}) => {
-  console.log(getData, 'show')
-
-  const something = () => {
-    getData(pickerValue, 'child')
-  }
+const GenderPicker = ({value, getGender}) => {
+  console.log(getGender, 'show')
 
   const items = ['None','Female', 'Male'];
   const [isModalVisible, setModalVisible] = useState(false);
   const [pickerValue, setPickerValue] = useState('');
+
+  const genderInfo = () => {
+    getGender(pickerValue, 'child')
+  }
 
   const toggleModal = () => {
     setModalVisible(!isModalVisible);
@@ -60,7 +60,7 @@ const GenderPicker = ({value, getData}) => {
   console.log(pickerValue)
 
   return (
-    <TouchableOpacity onPress={toggleModal, something} key={items.key}>
+    <TouchableOpacity onPress={toggleModal}>
       <View style={personalCSS.parameters_view} >
         <View style={picker.imgContainer}>
           {renderImage()}
@@ -103,6 +103,7 @@ const GenderPicker = ({value, getData}) => {
                   onPress={()=> {
                     onSelect(pickerValue);
                     toggleModal();
+                    genderInfo()
                     }}>
                   <Icon
                     name='done'
