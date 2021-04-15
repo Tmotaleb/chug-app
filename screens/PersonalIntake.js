@@ -22,15 +22,16 @@ const PersonalIntake = ({navigation, value, route}) => {
   return (
     <SafeAreaView style={intakeCSS.container}>
 
+      <View elevation={5} style={intakeCSS.titleContainer}>
         <View style={intakeCSS.titleBox}>
-          <Text  style={intakeCSS.title} >Welcome,</Text>
-          <Text  style={intakeCSS.title} >{nameType}</Text>
+          <Text  style={intakeCSS.title} >Welcome, {nameType}!</Text>
+          {/* <Text  style={intakeCSS.title} >{nameType}</Text> */}
         </View>
-
+      </View>
 
         <View style={intakeCSS.textBox}>
           <View style={intakeCSS.Box1}>
-            <Text>Welcome</Text>
+            <Text style={intakeCSS.Box1_Text}>Based on the information you have provided, it is recommended you drink {'HOLDER'} ounces of water per day</Text>
           </View>
           <View style={intakeCSS.Box2}>
            <Text>How is your day?</Text>

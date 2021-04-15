@@ -28,7 +28,7 @@ const personalCSS = StyleSheet.create({
   container: {
     flex: 1,
     justifyContent: 'center',
-    backgroundColor: 'white'
+    backgroundColor: '#e3f2fd'
   },
 
   box1: {
@@ -56,9 +56,9 @@ const personalCSS = StyleSheet.create({
     marginTop: 15,
     justifyContent: 'space-between',
     flexDirection: 'row',
-    marginHorizontal: 10,
-    borderRadius: 5,
-    backgroundColor: 'rgba(248,248,248, 0.8)',
+    marginHorizontal: 20,
+    borderRadius: 15,
+    backgroundColor: 'white',
 
     // shadowOffset: {
     //     width: 5,
@@ -67,6 +67,24 @@ const personalCSS = StyleSheet.create({
     // shadowOpacity: 1,
     // shadowRadius: 9,
     // shadowColor: '#E0E0E0'
+  },
+  topShadow:{
+    shadowOffset: {
+        width: -6,
+        height: -6
+    },
+    shadowOpacity: 1,
+    shadowRadius: 6,
+    shadowColor: '#FBFFFF'
+  },
+  bottomShadow:{
+      shadowOffset: {
+          width: 6,
+          height: 6
+      },
+      shadowOpacity: 1,
+      shadowRadius: 6,
+      shadowColor: '#B7C4DD'
   },
   title: {
     fontSize: 30,
@@ -178,20 +196,31 @@ const intakeCSS = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     backgroundColor: 'white',
-    // flexDirection: 'column'
+    // flexDirection: 'column',
+
   },
   Box1: {
-    backgroundColor: 'green'
+    marginHorizontal: 35,
+    marginVertical: 35,
+    fontSize: 25
+
+  },
+  Box1_Text: {
+    fontSize: 20,
+    // textAlign: 'justify',
+    // wordSpacing: 10
   },
   Box2: {
-    backgroundColor: 'pink'
+    backgroundColor: 'pink',
+    marginVertical: 90
+
   },
 
   textBox: {
     flex: 1,
-    justifyContent:'center',
+    // justifyContent:'space-between',
     alignItems: 'center',
-    backgroundColor:'lightblue',
+    // backgroundColor:'lightblue',
     width: '100%'
   },
   bottomBar: {
@@ -199,20 +228,23 @@ const intakeCSS = StyleSheet.create({
   },
 
   title: {
-    fontSize: 16,
-    fontWeight: '500',
+    fontSize: 30,
+    fontWeight: '700',
     color:'#00CCFF',
     textAlign: "center",
     textShadowColor: 'rgba(0, 0, 0, 0.1)',
     textShadowOffset: {width: -1, height: 1},
     textShadowRadius: 2,
     // marginTop: 30,
-    marginLeft: 30,
+    marginLeft: 35,
     alignSelf: 'flex-start',
   },
   titleBox: {
-    marginVertical: 30
-  }
+    marginVertical: 30,
+
+  },
+
+
 })
 
 

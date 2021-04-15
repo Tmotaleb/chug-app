@@ -23,22 +23,24 @@ const NameInput = ({getName}) => {
 
   console.log(text)
   return (
-    <TouchableOpacity>
-      <View style={personalCSS.parameters_view} >
+    <View>
+      <TouchableOpacity style={personalCSS.parameters_view}>
         <Text
-          style={[personalCSS.parameters_text, {marginLeft: 20}]}>
+          style={[personalCSS.parameters_text, {marginLeft: 20, paddingRight: 30}]}>
           Name
         </Text>
         <TextInput
-          style={{ borderBottomWidth: 1, borderBottomColor:'#00CCFF', color:'#2596be', fontSize:20, flex: 1}}
-          placeholder='Type your first name here...'
-          onChangeText={text => setText(text)}
+          style={{ borderBottomWidth: 1, borderBottomColor:'#00CCFF', color:'#2596be', fontSize:20, flex: 1, marginRight: 20}}
+          placeholder='Enter your first name...'
+          onChangeText={text => {setText(text); nameInfo()}}
           defaultValue={text}
-          onChange={()=> nameInfo()}
+          autoCompleteType={'name'}
+          // multiline={true}
+          // numberOfLines={1}
         />
 
-      </View>
-    </TouchableOpacity>
+      </TouchableOpacity>
+    </View>
   )
 }
 

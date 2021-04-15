@@ -30,6 +30,12 @@ const PersonalParameters = ({navigation, value}) => {
     setGenderData(info)
   }
 
+  const [weightData, setWeightData] = useState(null);
+  const getWeight = (info) => {
+    console.log(info, 'parent')
+    setWeightData(info)
+  }
+
 
 
 // useEffect(() => {
