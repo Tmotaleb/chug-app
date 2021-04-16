@@ -14,16 +14,21 @@ import Modal from 'react-native-modal';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import {picker} from '../components/style';
 
-const WeightPicker = ({value, key}) => {
+const WeightPicker = ({value, getWeight}) => {
+
+  const [isModalVisible, setModalVisible] = useState(false);
+  const [pickerValue, setPickerValue] = useState('');
+
+  console.log(getWeight, 'weight')
 
   const items =[];
-
   for (var i = 40; i <= 500; i++) {
     items.push(i.toString() + ' lb')
   }
-  const [isModalVisible, setModalVisible] = useState(false);
 
-  const [pickerValue, setPickerValue] = useState('');
+  const weightInfo = () => {
+    getWeight(pickerValue, 'childWeight')
+  }
 
   const toggleModal = () => {
     setModalVisible(!isModalVisible);
@@ -89,6 +94,7 @@ const WeightPicker = ({value, key}) => {
                   onPress={()=> {
                     onSelect(pickerValue);
                     toggleModal();
+                    weightInfo()
                     }}>
                   <Icon
                     name='done'

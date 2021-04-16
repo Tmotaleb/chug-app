@@ -20,20 +20,38 @@ const PersonalParameters = ({navigation, value}) => {
 
   const [nameData, setNameData] = useState(null);
   const getName = (info) => {
-    console.log(info, 'parent')
-    setNameData(info)
+    console.log(info, 'parent');
+    setNameData(info);
   }
 
   const [genderData, setGenderData] = useState(null)
   const getGender = (info) => {
-    console.log(info, 'parent')
-    setGenderData(info)
+    console.log(info, 'parent');
+    setGenderData(info);
   }
 
   const [weightData, setWeightData] = useState(null);
   const getWeight = (info) => {
-    console.log(info, 'parent')
-    setWeightData(info)
+    console.log(info, 'parent');
+    setWeightData(info);
+  }
+
+  const [activityData, setActivityData] = useState(null);
+  const getActivity = (info) => {
+    console.log(info, 'parent');
+    setActivityData(info);
+  }
+
+  const [pregnancyData, setPregnancyData] = useState(null);
+  const getPregnancyInfo = (info) => {
+    console.log(info, 'parent');
+    setPregnancyData(info);
+  }
+
+  const [BreastfeedingData, setBreastfeedingData] = useState(null);
+  const getBreastfeedingInfo = (info) => {
+    console.log(info, 'parent');
+    setBreastfeedingData(info);
   }
 
 
@@ -65,9 +83,9 @@ const PersonalParameters = ({navigation, value}) => {
         <GenderPicker getGender={getGender}/>
 
         <AgePicker />
-        <WeightPicker />
-        <ActivityPicker />
-        <PregnantPicker />
+        <WeightPicker getWeight={getWeight}/>
+        <ActivityPicker getActivity={getActivity}/>
+        <PregnantPicker getPregnancyInfo={getPregnancyInfo}/>
         <BreastfeedingPicker />
         <AppleHealthPicker />
       </ScrollView>
@@ -75,7 +93,10 @@ const PersonalParameters = ({navigation, value}) => {
         <View style={personalCSS.bottomBar}>
           <TouchableOpacity style={{alignSelf: 'flex-end', padding: 20}} onPress={()=> navigation.navigate('PersonalIntake', {
             genderType: genderData,
-            nameType: nameData
+            nameType: nameData,
+            weightType: weightData,
+            activityType: activityData,
+            pregnancyType: pregnancyData
           })}>
             <Text style={{color: 'black', fontSize: 18}}>Next</Text>
           </TouchableOpacity>

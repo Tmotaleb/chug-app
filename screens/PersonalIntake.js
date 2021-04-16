@@ -17,7 +17,38 @@ import * as Font from 'expo-font';
 
 const PersonalIntake = ({navigation, value, route}) => {
 
-  const {genderType, nameType} = route.params;
+  const {genderType, nameType, weightType, activityType, pregnancyType} = route.params;
+  console.log(pregnancyType, 'preg')
+
+  const averageWaterIntake = (num) => {
+    var weight = num.split(' ');
+    return Math.round(parseInt(weight[0]) * 0.67);
+  }
+
+  const activityLevel = (level) => {
+
+    var weight = averageWaterIntake(weightType)
+
+    if (level.localeCompare('Just Sleep') === 0) {
+        return weight += 0;
+    } else if (level.localeCompare('30 min/week') === 0) {
+      return weight += 12;
+    } else if (level.localeCompare('1 hour/week') === 0) {
+      return weight += 24;
+    } else if (level.localeCompare('2 hour/week') === 0) {
+      return weight += 120;
+    } else if (level.localeCompare('3 hour/week') === 0) {
+      return weight += 180;
+    } else if (level.localeCompare('4 hour/week') === 0) {
+      return weight += 240;
+    }
+  }
+
+
+
+
+
+  console.log(activityLevel(activityType))
 
   return (
     <SafeAreaView style={intakeCSS.container}>
@@ -25,7 +56,7 @@ const PersonalIntake = ({navigation, value, route}) => {
       <View elevation={5} style={intakeCSS.titleContainer}>
         <View style={intakeCSS.titleBox}>
           <Text  style={intakeCSS.title} >Welcome, {nameType}!</Text>
-          {/* <Text  style={intakeCSS.title} >{nameType}</Text> */}
+          <Text  style={intakeCSS.title} >{averageWaterIntake(weightType)} oz</Text>
         </View>
       </View>
 
