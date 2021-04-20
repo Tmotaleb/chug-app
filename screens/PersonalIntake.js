@@ -55,6 +55,8 @@ const PersonalIntake = ({navigation, value, route}) => {
        return level += 10;
       } else if (breastfeedingType === true) {
         return level += 30;
+      } else {
+        return level;
       }
     } else {
       return level;
@@ -67,13 +69,13 @@ const PersonalIntake = ({navigation, value, route}) => {
       <View elevation={5} style={intakeCSS.titleContainer}>
         <View style={intakeCSS.titleBox}>
           <Text  style={intakeCSS.title} >Welcome, {nameType} {activityLevel(activityType)}!</Text>
-          <Text  style={intakeCSS.title} >{femaleTabs(genderType)} oz</Text>
+          <Text  style={intakeCSS.title} ></Text>
         </View>
       </View>
 
         <View style={intakeCSS.textBox}>
           <View style={intakeCSS.Box1}>
-            <Text style={intakeCSS.Box1_Text}>Based on the information you have provided, it is recommended you drink {'HOLDER'} ounces of water per day</Text>
+            <Text style={intakeCSS.Box1_Text}>Based on the information you have provided, it is recommended you drink {femaleTabs(genderType)} ounces of water per day</Text>
           </View>
           <View style={intakeCSS.Box2}>
            <Text>How is your day?</Text>

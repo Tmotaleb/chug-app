@@ -12,19 +12,34 @@ import {
   Button} from 'react-native';
 import {personalCSS} from '../components/style';
 
-const NameInput = ({getName}) => {
-  const [text, setText] = useState('');
+const NameInput = ({value, getName}) => {
+  const [textInput, setTextInput] = useState('');
 
-  console.log(getName, 'name')
+  console.log(getName, 'name');
 
   const nameInfo = () => {
-    getName(text, 'nameInput')
+    getName(textInput, 'nameInput')
   }
 
-  console.log(text)
+  // const handleValueChange = () => {
+  //   setTextInput(value)
+  // }
+
+  // useEffect(() => {
+  //   handleValueChange();
+  // }, [textInput]);
+
+  useEffect(()=> {
+    if (value) {
+      setTextInput(value)
+    }
+  }, [textInput]);
+
+  console.log(textInput)
+
   return (
     <View>
-      <TouchableOpacity style={personalCSS.parameters_view}>
+      <View style={personalCSS.parameters_view}>
         <Text
           style={[personalCSS.parameters_text, {marginLeft: 20, paddingRight: 30}]}>
           Name
@@ -32,14 +47,12 @@ const NameInput = ({getName}) => {
         <TextInput
           style={{ borderBottomWidth: 1, borderBottomColor:'#00CCFF', color:'#2596be', fontSize:20, flex: 1, marginRight: 20}}
           placeholder='Enter your first name...'
-          onChangeText={text => {setText(text); nameInfo()}}
-          defaultValue={text}
+          onChangeText={value => {setTextInput(value); nameInfo()}}
+          defaultValue={textInput}
           autoCompleteType={'name'}
-          // multiline={true}
-          // numberOfLines={1}
         />
 
-      </TouchableOpacity>
+      </View>
     </View>
   )
 }
