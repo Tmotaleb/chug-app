@@ -13,22 +13,15 @@ import {picker} from '../components/style';
 const PregnantPicker = ({value, getPregnancyInfo}) => {
 
   const [isEnabled, setIsEnabled] = useState(false);
-  const [switchValue, setSwitchValue] = useState(null);
   const toggleSwitch = () => setIsEnabled(previousState => !previousState);
-  // const toggleSwitch = () => setIsEnabled(isEnabled);
 
   const pregnancyInfo = () => {
-    getPregnancyInfo(switchValue, 'preg-picker')
+    getPregnancyInfo(value, 'preg-picker')
   }
 
   const onSelect = (value) => {
     console.log(value)
     setIsEnabled(value)
-  }
-
-  const onSwitch = (value) => {
-    console.log(value, 'switch')
-    setSwitchValue(value);
   }
 
   useEffect(()=> {
@@ -58,9 +51,7 @@ const PregnantPicker = ({value, getPregnancyInfo}) => {
             value={isEnabled}
             style={picker.switch}
             onSelect={(value)=> setIsEnabled(isEnabled)}
-            // onChange={(value)=> getPregnancyInfo(!isEnabled)}
-            onSwitch={(value)=> setSwitchValue(isEnabled)}
-
+            onChange={(value)=> getPregnancyInfo(!isEnabled)}
           />
         </View>
       </View>

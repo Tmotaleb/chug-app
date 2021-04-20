@@ -42,16 +42,21 @@ const PersonalParameters = ({navigation, value}) => {
     setActivityData(info);
   }
 
-  const [pregnancyData, setPregnancyData] = useState(null);
+  const [pregnancyData, setPregnancyData] = useState(false);
   const getPregnancyInfo = (info) => {
     console.log(info, 'parent');
     setPregnancyData(info);
   }
 
-  const [BreastfeedingData, setBreastfeedingData] = useState(null);
+  const [BreastfeedingData, setBreastfeedingData] = useState(false);
   const getBreastfeedingInfo = (info) => {
     console.log(info, 'parent');
     setBreastfeedingData(info);
+  }
+  const [AppleHealthData, setAppleHealthData] = useState(false);
+  const getAppleHealthInfo = (info) => {
+    console.log(info, 'parent');
+    setAppleHealthData(info);
   }
 
 
@@ -79,15 +84,13 @@ const PersonalParameters = ({navigation, value}) => {
 
       <ScrollView style={personalCSS.box2}>
         <NameInput getName={getName}/>
-
         <GenderPicker getGender={getGender}/>
-
         <AgePicker />
         <WeightPicker getWeight={getWeight}/>
         <ActivityPicker getActivity={getActivity}/>
         <PregnantPicker getPregnancyInfo={getPregnancyInfo}/>
-        <BreastfeedingPicker />
-        <AppleHealthPicker />
+        <BreastfeedingPicker getBreastfeedingInfo={getBreastfeedingInfo}/>
+        {/* <AppleHealthPicker getAppleHealthInfo={getAppleHealthInfo}/> */}
       </ScrollView>
 
         <View style={personalCSS.bottomBar}>
@@ -96,7 +99,9 @@ const PersonalParameters = ({navigation, value}) => {
             nameType: nameData,
             weightType: weightData,
             activityType: activityData,
-            pregnancyType: pregnancyData
+            pregnancyType: pregnancyData,
+            breastfeedingType: BreastfeedingData,
+            appleHealthType: AppleHealthData
           })}>
             <Text style={{color: 'black', fontSize: 18}}>Next</Text>
           </TouchableOpacity>

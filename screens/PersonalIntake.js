@@ -17,8 +17,10 @@ import * as Font from 'expo-font';
 
 const PersonalIntake = ({navigation, value, route}) => {
 
-  const {genderType, nameType, weightType, activityType, pregnancyType} = route.params;
+  const {genderType, nameType, weightType, activityType, pregnancyType, breastfeedingType} = route.params;
+
   console.log(pregnancyType, 'preg')
+  console.log(breastfeedingType, 'breastfeedingdata')
 
   const averageWaterIntake = (num) => {
     var weight = num.split(' ');
@@ -26,8 +28,7 @@ const PersonalIntake = ({navigation, value, route}) => {
   }
 
   const activityLevel = (level) => {
-
-    var weight = averageWaterIntake(weightType)
+    var weight = averageWaterIntake(weightType);
 
     if (level.localeCompare('Just Sleep') === 0) {
         return weight += 0;
@@ -41,22 +42,32 @@ const PersonalIntake = ({navigation, value, route}) => {
       return weight += 180;
     } else if (level.localeCompare('4 hour/week') === 0) {
       return weight += 240;
+    } else {
+      return weight += 0;
     }
   }
 
+  const femaleTabs = (gender) => {
+    var level = activityLevel(activityType);
 
-
-
-
-  console.log(activityLevel(activityType))
+    if (gender === 'Female') {
+      if (pregnancyType === true) {
+       return level += 10;
+      } else if (breastfeedingType === true) {
+        return level += 30;
+      }
+    } else {
+      return level;
+    }
+  }
 
   return (
     <SafeAreaView style={intakeCSS.container}>
 
       <View elevation={5} style={intakeCSS.titleContainer}>
         <View style={intakeCSS.titleBox}>
-          <Text  style={intakeCSS.title} >Welcome, {nameType}!</Text>
-          <Text  style={intakeCSS.title} >{averageWaterIntake(weightType)} oz</Text>
+          <Text  style={intakeCSS.title} >Welcome, {nameType} {activityLevel(activityType)}!</Text>
+          <Text  style={intakeCSS.title} >{femaleTabs(genderType)} oz</Text>
         </View>
       </View>
 
@@ -68,10 +79,6 @@ const PersonalIntake = ({navigation, value, route}) => {
            <Text>How is your day?</Text>
           </View>
         </View>
-
-
-
-
 
 
     <View style={intakeCSS.bottomBar}>
