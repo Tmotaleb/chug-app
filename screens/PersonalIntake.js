@@ -31,7 +31,7 @@ const PersonalIntake = ({navigation, value, route}) => {
     var weight = averageWaterIntake(weightType);
 
     if (level.localeCompare('Just Sleep') === 0) {
-        return weight += 0;
+      return weight += 0;
     } else if (level.localeCompare('30 min/week') === 0) {
       return weight += 12;
     } else if (level.localeCompare('1 hour/week') === 0) {
@@ -63,19 +63,24 @@ const PersonalIntake = ({navigation, value, route}) => {
     }
   }
 
+
   return (
     <SafeAreaView style={intakeCSS.container}>
 
       <View elevation={5} style={intakeCSS.titleContainer}>
         <View style={intakeCSS.titleBox}>
-          <Text  style={intakeCSS.title} >Welcome, {nameType} {activityLevel(activityType)}!</Text>
-          <Text  style={intakeCSS.title} ></Text>
+          <Text  style={intakeCSS.title} >Welcome,</Text>
+          <Text  style={intakeCSS.title} >{nameType.trim()}!</Text>
         </View>
       </View>
 
         <View style={intakeCSS.textBox}>
           <View style={intakeCSS.Box1}>
-            <Text style={intakeCSS.Box1_Text}>Based on the information you have provided, it is recommended you drink {femaleTabs(genderType)} ounces of water per day</Text>
+            <Text style={intakeCSS.Box1_Text}>Based on the information you have provided, it is recommended you drink</Text>
+            <View style={{flexDirection: 'row'}}>
+              <Text style={[intakeCSS.Box1_Text, {fontWeight: '700'}]}>{femaleTabs(genderType)} ounces</Text>
+              <Text style={intakeCSS.Box1_Text}> of water per day!</Text>
+            </View>
           </View>
           <View style={intakeCSS.Box2}>
            <Text>How is your day?</Text>

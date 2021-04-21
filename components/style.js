@@ -200,7 +200,7 @@ const intakeCSS = StyleSheet.create({
 
   },
   Box1: {
-    marginHorizontal: 35,
+    marginHorizontal: 25,
     marginVertical: 35,
     fontSize: 25
 
@@ -212,7 +212,7 @@ const intakeCSS = StyleSheet.create({
   },
   Box2: {
     backgroundColor: 'pink',
-    marginVertical: 90
+    // marginVertical: 90
 
   },
 
@@ -221,7 +221,11 @@ const intakeCSS = StyleSheet.create({
     // justifyContent:'space-between',
     alignItems: 'center',
     // backgroundColor:'lightblue',
-    width: '100%'
+    width: '100%',
+    // marginHorizontal: 35,
+
+
+
   },
   bottomBar: {
     height: 60,
@@ -229,18 +233,18 @@ const intakeCSS = StyleSheet.create({
 
   title: {
     fontSize: 30,
-    // fontWeight: '700',
+    fontWeight: '700',
     color:'#00CCFF',
     textAlign: "center",
-    // textShadowColor: 'rgba(0, 0, 0, 0.1)',
-    // textShadowOffset: {width: -1, height: 1},
-    // textShadowRadius: 2,
-    // marginTop: 30,
+    textShadowColor: 'rgba(0, 0, 0, 0.1)',
+    textShadowOffset: {width: -1, height: 1},
+    textShadowRadius: 2,
+    // marginTop: 5,
     marginLeft: 35,
     alignSelf: 'flex-start',
   },
   titleBox: {
-    marginVertical: 30,
+    marginVertical: 20,
 
   },
 

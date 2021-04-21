@@ -30,9 +30,8 @@ const NameInput = ({value, getName}) => {
   // }, [textInput]);
 
   useEffect(()=> {
-    if (value) {
-      setTextInput(value)
-    }
+    getName(textInput);
+    console.log(textInput, 'input');
   }, [textInput]);
 
   console.log(textInput)
@@ -47,9 +46,7 @@ const NameInput = ({value, getName}) => {
         <TextInput
           style={{ borderBottomWidth: 1, borderBottomColor:'#00CCFF', color:'#2596be', fontSize:20, flex: 1, marginRight: 20}}
           placeholder='Enter your first name...'
-          onChangeText={value => {setTextInput(value); nameInfo()}}
-          defaultValue={textInput}
-          autoCompleteType={'name'}
+          onChangeText={value => setTextInput(value)}
         />
 
       </View>
