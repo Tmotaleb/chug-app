@@ -188,8 +188,9 @@ const picker = StyleSheet.create({
   switch: {
     marginLeft: 5,
     transform:[{ scaleX: 1.1  }, { scaleY: 1.1 }]
-  },
+  }
 })
+
 
 const intakeCSS = StyleSheet.create({
   container: {
@@ -211,9 +212,11 @@ const intakeCSS = StyleSheet.create({
     // wordSpacing: 10
   },
   Box2: {
-    backgroundColor: 'pink',
+    // backgroundColor: 'pink',
     // marginVertical: 90
-
+    marginHorizontal: 25,
+    marginVertical: 35,
+    fontSize: 25
   },
 
   textBox: {
@@ -223,8 +226,6 @@ const intakeCSS = StyleSheet.create({
     // backgroundColor:'lightblue',
     width: '100%',
     // marginHorizontal: 35,
-
-
 
   },
   bottomBar: {
@@ -245,12 +246,50 @@ const intakeCSS = StyleSheet.create({
   },
   titleBox: {
     marginVertical: 20,
+  },
+})
+
+const personalIntake = StyleSheet.create({
+  container: {
+    flexDirection:'row',
+    alignSelf: 'center',
+    justifyContent: 'space-between',
 
   },
+  box: {
+    padding: 10
+  },
 
+  textInput1: {
+    borderWidth: 1,
+    borderColor: '#00CCFF',
+    width: 100,
+    height: 50,
+    borderTopLeftRadius:10,
+    borderTopRightRadius:10,
+    borderBottomLeftRadius:10,
+    borderBottomRightRadius:10,
 
+    textAlign: 'center',
+    fontSize: 24,
+    color:'grey'
+  },
+  dropdownBorder: {
+    backgroundColor: 'white',
+    borderColor: '#00CCFF',
+
+    borderBottomWidth: 1,
+    borderTopWidth: 1,
+    borderRightWidth: 1,
+
+    borderTopLeftRadius:30,
+    borderTopRightRadius:30,
+    borderBottomLeftRadius:30,
+    borderBottomRightRadius:30,
+
+  }
 })
 
 
-export {splash, boardingCSS, personalCSS, picker, intakeCSS};
+export {splash, boardingCSS, personalCSS, picker, intakeCSS, personalIntake};
 

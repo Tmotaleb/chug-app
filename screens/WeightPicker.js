@@ -8,11 +8,10 @@ import {
   StyleSheet,
   TextInput,
   Button} from 'react-native';
-import {personalCSS} from '../components/style';
+import {personalCSS, picker} from '../components/style';
 import {Picker} from '@react-native-picker/picker';
 import Modal from 'react-native-modal';
 import Icon from 'react-native-vector-icons/MaterialIcons';
-import {picker} from '../components/style';
 
 const WeightPicker = ({value, getWeight}) => {
 

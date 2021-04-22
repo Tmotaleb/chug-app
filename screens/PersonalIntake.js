@@ -1,9 +1,20 @@
 import { StatusBar } from 'expo-status-bar';
 import React, {useState, useEffect} from 'react';
-import { Dimensions, Text, View , SafeAreaView, TouchableOpacity, Switch, Image, ImageBackground, ScrollView, Modal, Pressable} from 'react-native';
+import {
+  Text,
+  View ,
+  SafeAreaView,
+  TouchableOpacity,
+  Switch,
+  Image,
+  Picker,
+  ImageBackground,
+  ScrollView,
+  Pressable,
+  TextInput } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
-import {intakeCSS, personalCSS} from '../components/style';
+import {intakeCSS, personalCSS, picker, personalIntake} from '../components/style';
 import GenderPicker from './GenderPicker';
 import AgePicker from './AgePicker';
 import ActivityPicker from './ActivityPicker';
@@ -13,14 +24,27 @@ import BreastfeedingPicker from './BreastfeedingPicker';
 import AppleHealthPicker from './AppleHealthPicker';
 import NameInput from './NameInput';
 import * as Font from 'expo-font';
+// import {Picker} from '@react-native-picker/picker';
+// import Modal from 'react-native-modal';
+// import Icon from 'react-native-vector-icons/MaterialIcons';
+import DropDownPicker from 'react-native-dropdown-picker';
+import Icon from 'react-native-vector-icons/Feather';
+
 
 
 const PersonalIntake = ({navigation, value, route}) => {
 
   const {genderType, nameType, weightType, activityType, pregnancyType, breastfeedingType} = route.params;
 
-  console.log(pregnancyType, 'preg')
-  console.log(breastfeedingType, 'breastfeedingdata')
+
+  const [textValue, setTextValue] = useState('');
+
+  const [selectedValue, setSelectedValue] = useState('oz');
+
+  console.log(selectedValue)
+
+  // console.log(pregnancyType, 'preg')
+  // console.log(breastfeedingType, 'breastfeedingdata')
 
   const averageWaterIntake = (num) => {
     var weight = num.split(' ');
@@ -74,27 +98,70 @@ const PersonalIntake = ({navigation, value, route}) => {
         </View>
       </View>
 
-        <View style={intakeCSS.textBox}>
-          <View style={intakeCSS.Box1}>
-            <Text style={intakeCSS.Box1_Text}>Based on the information you have provided, it is recommended you drink</Text>
-            <View style={{flexDirection: 'row'}}>
-              <Text style={[intakeCSS.Box1_Text, {fontWeight: '700'}]}>{femaleTabs(genderType)} ounces</Text>
-              <Text style={intakeCSS.Box1_Text}> of water per day!</Text>
-            </View>
-          </View>
-          <View style={intakeCSS.Box2}>
-           <Text>How is your day?</Text>
+      <View style={intakeCSS.textBox}>
+        <View style={intakeCSS.Box1}>
+          <Text style={intakeCSS.Box1_Text}>Based on the information you have provided, it is recommended you drink</Text>
+          <View style={{flexDirection: 'row'}}>
+            <Text style={[intakeCSS.Box1_Text, {fontWeight: '700'}]}>{femaleTabs(genderType)} oz</Text>
+            <Text style={intakeCSS.Box1_Text}> of water per day!</Text>
           </View>
         </View>
 
+        <View style={intakeCSS.Box2}>
+          <Text style={intakeCSS.Box1_Text}>If you wish to customize this information, please enter it below</Text>
+        </View>
 
-    <View style={intakeCSS.bottomBar}>
-      <TouchableOpacity style={{alignSelf: 'flex-end', padding: 20}} onPress={()=> navigation.navigate('PersonalIntake')}>
-        <Text style={{color: 'black', fontSize: 18}}>Next</Text>
-      </TouchableOpacity>
-    </View>
+          <View style={personalIntake.container}>
+            <View style={personalIntake.box}>
+              <TextInput
+                style={personalIntake.textInput1}
+                placeholder='Enter...'
+                value={textValue}
+                placeholderTextColor='#2596be'
+                // placeholder={pickerValue}
+                onChangeText={setTextValue}
+                maxLength={3}
+              />
+            </View>
 
-  </SafeAreaView>
+            <View style={personalIntake.box}>
+              <DropDownPicker
+                items={[
+                  {label:'oz', value:'oz'},
+                  {label:'ml', value:'ml'},
+                  {label:'L', value:'L'}
+                ]}
+                defaultValue={selectedValue}
+                containerStyle={{height: 50, width: 70}}
+                style={personalIntake.dropdownBorder}
+                itemStyle={{
+                  justifyContent: 'flex-start'
+                }}
+                labelStyle={{
+                  fontSize: 24,
+                  textAlign: 'flex-start',
+                  color: 'grey'
+                }}
+                dropDownStyle={{backgroundColor:'white', borderBottomLeftRadius: 30, borderBottomRightRadius: 30, borderColor: '#00CCFF'}}
+                onChangeItem={item => {setSelectedValue(selectedValue); console.log(item)}}
+              />
+            </View>
+          </View>
+
+
+
+      </View>
+
+
+
+
+      <View style={intakeCSS.bottomBar}>
+        <TouchableOpacity style={{alignSelf: 'flex-end', padding: 20}} onPress={()=> navigation.navigate('PersonalIntake')}>
+          <Text style={{color: 'black', fontSize: 18}}>Next</Text>
+        </TouchableOpacity>
+      </View>
+
+    </SafeAreaView>
   );
 }
 
