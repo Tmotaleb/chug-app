@@ -27,9 +27,8 @@ import * as Font from 'expo-font';
 // import {Picker} from '@react-native-picker/picker';
 // import Modal from 'react-native-modal';
 // import Icon from 'react-native-vector-icons/MaterialIcons';
-import DropDownPicker from 'react-native-dropdown-picker';
+// import DropDownPicker from 'react-native-dropdown-picker';
 import Icon from 'react-native-vector-icons/Feather';
-
 
 
 const PersonalIntake = ({navigation, value, route}) => {
@@ -38,8 +37,8 @@ const PersonalIntake = ({navigation, value, route}) => {
 
 
   const [textValue, setTextValue] = useState('');
-
   const [selectedValue, setSelectedValue] = useState('oz');
+  const [totalIntake, setTotalIntake] = useState(null);
 
   console.log(selectedValue)
 
@@ -125,7 +124,7 @@ const PersonalIntake = ({navigation, value, route}) => {
             </View>
 
             <View style={personalIntake.box}>
-              <DropDownPicker
+              {/* <DropDownPicker
                 items={[
                   {label:'oz', value:'oz'},
                   {label:'ml', value:'ml'},
@@ -139,12 +138,12 @@ const PersonalIntake = ({navigation, value, route}) => {
                 }}
                 labelStyle={{
                   fontSize: 24,
-                  textAlign: 'flex-start',
+                  textAlign: 'center',
                   color: 'grey'
                 }}
                 dropDownStyle={{backgroundColor:'white', borderBottomLeftRadius: 30, borderBottomRightRadius: 30, borderColor: '#00CCFF'}}
                 onChangeItem={item => {setSelectedValue(selectedValue); console.log(item)}}
-              />
+              /> */}
             </View>
           </View>
 

@@ -50,7 +50,7 @@ const WeightPicker = ({value, getWeight}) => {
 
 
   return (
-    <TouchableOpacity onPress={toggleModal} key={items.key}>
+    <TouchableOpacity onPress={toggleModal}>
       <View style={personalCSS.parameters_view} >
         <View style={picker.imgContainer}>
           <Image source={require('../assets/images/onboarding-img3.png')} style={picker.img}/>
