@@ -113,6 +113,7 @@ const WeightPicker = ({value, getWeight}) => {
             </View>
           </View>
         </Modal>
+
       </View>
     </TouchableOpacity>
   )

@@ -27,7 +27,7 @@ import * as Font from 'expo-font';
 // import {Picker} from '@react-native-picker/picker';
 // import Modal from 'react-native-modal';
 // import Icon from 'react-native-vector-icons/MaterialIcons';
-// import DropDownPicker from 'react-native-dropdown-picker';
+import DropDownPicker from 'react-native-dropdown-picker';
 import Icon from 'react-native-vector-icons/Feather';
 
 
@@ -35,12 +35,13 @@ const PersonalIntake = ({navigation, value, route}) => {
 
   const {genderType, nameType, weightType, activityType, pregnancyType, breastfeedingType} = route.params;
 
+  // var myIntakeValue = femaleTabs(genderType);
 
   const [textValue, setTextValue] = useState('');
   const [selectedValue, setSelectedValue] = useState('oz');
   const [totalIntake, setTotalIntake] = useState(null);
 
-  console.log(selectedValue)
+  console.log(genderType, 'gender')
 
   // console.log(pregnancyType, 'preg')
   // console.log(breastfeedingType, 'breastfeedingdata')
@@ -70,7 +71,7 @@ const PersonalIntake = ({navigation, value, route}) => {
     }
   }
 
-  const femaleTabs = (gender) => {
+  var isFemaleTabs = (gender) => {
     var level = activityLevel(activityType);
 
     if (gender === 'Female') {
@@ -86,6 +87,12 @@ const PersonalIntake = ({navigation, value, route}) => {
     }
   }
 
+  var myIntakeValue = isFemaleTabs(genderType);
+  console.log(isFemaleTabs(genderType), 'gender2')
+
+  useEffect(()=> {
+    setTotalIntake(myIntakeValue);
+  }, [myIntakeValue]);
 
   return (
     <SafeAreaView style={intakeCSS.container}>
@@ -101,7 +108,7 @@ const PersonalIntake = ({navigation, value, route}) => {
         <View style={intakeCSS.Box1}>
           <Text style={intakeCSS.Box1_Text}>Based on the information you have provided, it is recommended you drink</Text>
           <View style={{flexDirection: 'row'}}>
-            <Text style={[intakeCSS.Box1_Text, {fontWeight: '700'}]}>{femaleTabs(genderType)} oz</Text>
+            <Text style={[intakeCSS.Box1_Text, {fontWeight: '700'}]}>{totalIntake} oz</Text>
             <Text style={intakeCSS.Box1_Text}> of water per day!</Text>
           </View>
         </View>
@@ -124,7 +131,7 @@ const PersonalIntake = ({navigation, value, route}) => {
             </View>
 
             <View style={personalIntake.box}>
-              {/* <DropDownPicker
+              <DropDownPicker
                 items={[
                   {label:'oz', value:'oz'},
                   {label:'ml', value:'ml'},
@@ -143,7 +150,7 @@ const PersonalIntake = ({navigation, value, route}) => {
                 }}
                 dropDownStyle={{backgroundColor:'white', borderBottomLeftRadius: 30, borderBottomRightRadius: 30, borderColor: '#00CCFF'}}
                 onChangeItem={item => {setSelectedValue(selectedValue); console.log(item)}}
-              /> */}
+              />
             </View>
           </View>
 

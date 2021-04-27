@@ -57,19 +57,19 @@ const ModalPicker = ({value, toggleModal, onSelect, onChangeText, label, selecte
 
   return (
 
-    <View>
-      <Pressable onPressIn={onPressIn}>
-        <View style={picker.inputBox} pointerEvents='none'>
-          <TextInput
-            style={picker.textInput}
-            placeholderTextColor='#2596be'
-            placeholder={pickerValue}
-            onChangeText={onChangeText}
-            caretHidden={true}
-            editable={false}
-            />
-        </View>
-      </Pressable>
+    // <View>
+    //   <Pressable onPressIn={onPressIn}>
+    //     <View style={picker.inputBox} pointerEvents='none'>
+    //       <TextInput
+    //         style={picker.textInput}
+    //         placeholderTextColor='#2596be'
+    //         placeholder={pickerValue}
+    //         onChangeText={onChangeText}
+    //         caretHidden={true}
+    //         editable={false}
+    //         />
+    //     </View>
+    //   </Pressable>
 
       <Modal isVisible={isVisible}>
         <View style={picker.container}>
@@ -105,7 +105,7 @@ const ModalPicker = ({value, toggleModal, onSelect, onChangeText, label, selecte
           </View>
         </View>
       </Modal>
-    </View>
+
   )
 }
 

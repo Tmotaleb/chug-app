@@ -19,13 +19,13 @@ import {picker} from '../components/style';
 import { Ionicons } from '@expo/vector-icons';
 import ModalPicker from './ModalPicker';
 
-const GenderPicker = ({getGender, value, toggleModal, onSelect, onChangeText, label, selectedValue, isVisible, items, onValueChange, onPress, onPressIn, itemMapper, itemContainer}) => {
+const GenderPicker = ({getGender, value}) => {
 
   // toggleModal, onSelect, onChange, label, selectedValue, isVisible, items, onValueChange, onPress, onPressIn, itemMapper}
 
   console.log(getGender, 'show')
 
-  items = ['None','Female', 'Male'];
+  const items = ['None','Female', 'Male'];
   const [isModalVisible, setModalVisible] = useState(false);
   const [pickerValue, setPickerValue] = useState('');
 
@@ -33,21 +33,20 @@ const GenderPicker = ({getGender, value, toggleModal, onSelect, onChangeText, la
     getGender(pickerValue, 'child')
   };
 
-  // const toggleModal = () => {
-  //   setModalVisible(!isModalVisible);
-  // };
+  const toggleModal = () => {
+    setModalVisible(!isModalVisible);
+  };
 
-  // const onSelect = (value) => {
-  //   console.log(value)
-  //   setPickerValue(value)
-  // };
+  const onSelect = (value) => {
+    console.log(value)
+    setPickerValue(value)
+  };
 
   useEffect(()=> {
     if (value) {
       setPickerValue(value)
     }
   }, [value]);
-
 
 
   const renderImage = () => {
@@ -62,23 +61,17 @@ const GenderPicker = ({getGender, value, toggleModal, onSelect, onChangeText, la
     }
   }
 
+  // const itemMapper = (items) => {
+  //   return items.map((item)=> (
+  //     <Picker.Item value={item} key={item} label={item} color='#04303d'/>
+  //   ))
+  // }
+
   console.log(pickerValue);
 
   return (
 
-    // <ModalPicker
-    //   onPressIn={toggleModal}
-    //   onPress={() => {onSelect(pickerValue); toggleModal()}}
-    //   label='Gender'
-    //   image={renderImage()}
-    //   selectedValue={pickerValue}
-    //   isVisible={isModalVisible}
-    //   onValueChange={(value)=> setPickerValue(value)}
-    //   itemMapper={itemMapper}
-
-    // />
-
-    <TouchableOpacity onPress={toggleModal}>
+    <TouchableOpacity onPressIn={toggleModal}>
       <View style={personalCSS.parameters_view} >
         <View style={picker.imgContainer}>
           {renderImage()}
@@ -88,25 +81,36 @@ const GenderPicker = ({getGender, value, toggleModal, onSelect, onChangeText, la
           Gender
         </Text>
 
-      <ModalPicker
-        onPressIn={toggleModal}
-        isVisible={isModalVisible}
+        <Pressable onPressIn={toggleModal}>
+          <View style={picker.inputBox} pointerEvents='none'>
+            <TextInput
+              style={picker.textInput}
+              placeholderTextColor='#2596be'
+              placeholder={pickerValue}
+              onChangeText={() => pickerValue}
+              caretHidden={true}
+              editable={false}
+              />
+          </View>
+        </Pressable>
 
-
-      />
-      {/* <View>
-        <Pressable onPress={toggleModal}>
-            <View style={picker.inputBox} pointerEvents='none'>
-              <TextInput
-                style={picker.textInput}
-                placeholderTextColor='#2596be'
-                placeholder={pickerValue}
-                onChangeText={() => pickerValue}
-                caretHidden={true}
-                editable={false}
-                />
-            </View>
-          </Pressable>
+      {/* <View  isVisible={isModalVisible}>
+        <ModalPicker
+          // onPressIn={toggleModal}
+          // isVisible={isModalVisible}
+          items={pickerItems}
+          // onChangeText={() => pickerValue}
+          label='Gender'
+          selectedValue={pickerValue}
+          onValueChange={(value)=> setPickerValue(value)}
+          onPress={()=> {
+            onSelect(pickerValue);
+            toggleModal();
+            // weightInfo()
+          }}
+          itemContainer={itemMapper(pickerItems)}
+        />
+      </View> */}
 
         <Modal isVisible={isModalVisible}>
           <View style={picker.container}>
@@ -148,7 +152,7 @@ const GenderPicker = ({getGender, value, toggleModal, onSelect, onChangeText, la
             </View>
           </View>
         </Modal>
-      </View> */}
+
       </View>
     </TouchableOpacity>
   )
