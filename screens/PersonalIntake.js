@@ -36,8 +36,8 @@ const PersonalIntake = ({navigation, value, route}) => {
   const {genderType, nameType, weightType, activityType, pregnancyType, breastfeedingType} = route.params;
   const [textValue, setTextValue] = useState('');
   const [selectedValue, setSelectedValue] = useState('oz');
-  const [totalIntake, setTotalIntake] = useState(null);
-  const [myVal, setMyVal] = useState(null)
+  const [intakeVal, setIntakeVal] = useState(null);
+  const [totalIntake, setTotalIntake] = useState(null)
 
   const averageWaterIntake = (num) => {
     var weight = num.split(' ');
@@ -83,10 +83,10 @@ const PersonalIntake = ({navigation, value, route}) => {
   var myIntakeValue = isFemaleTabs(genderType);
 
   useEffect(()=> {
-    setTotalIntake(myIntakeValue);
+    setIntakeVal(myIntakeValue);
     setTextValue(textValue);
     console.log(textValue, 'test')
-    setMyVal(textValue ? textValue : myIntakeValue);
+    setTotalIntake(textValue ? textValue : myIntakeValue);
   }, [myIntakeValue, textValue, selectedValue]);
 
   return (
@@ -103,7 +103,7 @@ const PersonalIntake = ({navigation, value, route}) => {
         <View style={intakeCSS.Box1}>
           <Text style={intakeCSS.Box1_Text}>Based on the information you have provided, it is recommended you drink</Text>
           <View style={{flexDirection: 'row'}}>
-            <Text style={[intakeCSS.Box1_Text, {fontWeight: '700'}]}>{totalIntake} oz</Text>
+            <Text style={[intakeCSS.Box1_Text, {fontWeight: '700'}]}>{intakeVal} oz</Text>
             <Text style={intakeCSS.Box1_Text}> of water per day!</Text>
           </View>
         </View>
@@ -154,7 +154,7 @@ const PersonalIntake = ({navigation, value, route}) => {
 
       <View style={intakeCSS.bottomBar}>
         <TouchableOpacity style={{alignSelf: 'flex-end', padding: 20}} onPress={()=> navigation.navigate('HomePage', {
-          intakeAmount: myVal,
+          intakeAmount: totalIntake,
           metricType: selectedValue
         })}>
           <Text style={{color: 'black', fontSize: 18}}>Next</Text>
