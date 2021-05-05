@@ -34,17 +34,10 @@ import Icon from 'react-native-vector-icons/Feather';
 const PersonalIntake = ({navigation, value, route}) => {
 
   const {genderType, nameType, weightType, activityType, pregnancyType, breastfeedingType} = route.params;
-
-  // var myIntakeValue = femaleTabs(genderType);
-
   const [textValue, setTextValue] = useState('');
   const [selectedValue, setSelectedValue] = useState('oz');
   const [totalIntake, setTotalIntake] = useState(null);
-
-  console.log(genderType, 'gender')
-
-  // console.log(pregnancyType, 'preg')
-  // console.log(breastfeedingType, 'breastfeedingdata')
+  const [myVal, setMyVal] = useState(null)
 
   const averageWaterIntake = (num) => {
     var weight = num.split(' ');
@@ -88,11 +81,13 @@ const PersonalIntake = ({navigation, value, route}) => {
   }
 
   var myIntakeValue = isFemaleTabs(genderType);
-  console.log(isFemaleTabs(genderType), 'gender2')
 
   useEffect(()=> {
     setTotalIntake(myIntakeValue);
-  }, [myIntakeValue]);
+    setTextValue(textValue);
+    console.log(textValue, 'test')
+    setMyVal(textValue ? textValue : myIntakeValue);
+  }, [myIntakeValue, textValue, selectedValue]);
 
   return (
     <SafeAreaView style={intakeCSS.container}>
@@ -130,6 +125,8 @@ const PersonalIntake = ({navigation, value, route}) => {
               />
             </View>
 
+            {/* need to work on changing the state so that it renders on the next page based on the users selection, currently only prints 'oz' */}
+
             <View style={personalIntake.box}>
               <DropDownPicker
                 items={[
@@ -149,20 +146,17 @@ const PersonalIntake = ({navigation, value, route}) => {
                   color: 'grey'
                 }}
                 dropDownStyle={{backgroundColor:'white', borderBottomLeftRadius: 30, borderBottomRightRadius: 30, borderColor: '#00CCFF'}}
-                onChangeItem={item => {setSelectedValue(selectedValue); console.log(item)}}
+                onChangeItem={item => {setSelectedValue(selectedValue); console.log(item.value)}}
               />
             </View>
           </View>
-
-
-
       </View>
 
-
-
-
       <View style={intakeCSS.bottomBar}>
-        <TouchableOpacity style={{alignSelf: 'flex-end', padding: 20}} onPress={()=> navigation.navigate('PersonalIntake')}>
+        <TouchableOpacity style={{alignSelf: 'flex-end', padding: 20}} onPress={()=> navigation.navigate('HomePage', {
+          intakeAmount: myVal,
+          metricType: selectedValue
+        })}>
           <Text style={{color: 'black', fontSize: 18}}>Next</Text>
         </TouchableOpacity>
       </View>
@@ -170,31 +164,6 @@ const PersonalIntake = ({navigation, value, route}) => {
     </SafeAreaView>
   );
 }
-
-
-// <SafeAreaView style={intakeCSS.container}>
-
-
-// <View style={intakeCSS.box1}>
-
-//  </View>
-
-//   <ScrollView style={intakeCSS.intakeBox}>
-//   <View>
-//     <Text>Based on the information you have provided, it is recommended you drink {'HOLDER'} ounces of water per day
-//     </Text>
-//   </View>
-//     <View>
-//     <Text>If you wish to customize this information, please enter it below</Text>
-//     </View>
-//   </ScrollView>
-// {/*
-//   <View style={personalCSS.bottomBar}>
-//     <TouchableOpacity style={{alignSelf: 'flex-end', padding: 20}} onPress={()=> navigation.navigate('PersonalIntake')}>
-//       <Text style={{color: 'black', fontSize: 18}}>Next</Text>
-//     </TouchableOpacity>
-//   </View> */}
-
 
 
 export default PersonalIntake;
