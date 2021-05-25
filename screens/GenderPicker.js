@@ -8,6 +8,7 @@ import {
   Pressable,
   StyleSheet,
   TextInput,
+  Alert,
   DismissKeyboard,
   Button} from 'react-native';
 import {personalCSS} from '../components/style';
@@ -19,13 +20,13 @@ import {picker} from '../components/style';
 import { Ionicons } from '@expo/vector-icons';
 import ModalPicker from './ModalPicker';
 
-const GenderPicker = ({getGender, value}) => {
+const GenderPicker = ({value, getGender, visible, onRequestClose, onPressIn, onPress, label, onCheck}) => {
 
   // toggleModal, onSelect, onChange, label, selectedValue, isVisible, items, onValueChange, onPress, onPressIn, itemMapper}
 
   console.log(getGender, 'show')
 
-  const items = ['None','Female', 'Male'];
+  const pickerItems = ['None','Female', 'Male'];
   const [isModalVisible, setModalVisible] = useState(false);
   const [pickerValue, setPickerValue] = useState('');
 
@@ -61,11 +62,11 @@ const GenderPicker = ({getGender, value}) => {
     }
   }
 
-  // const itemMapper = (items) => {
-  //   return items.map((item)=> (
-  //     <Picker.Item value={item} key={item} label={item} color='#04303d'/>
-  //   ))
-  // }
+  const itemMapper = (items) => {
+    return items.map((item)=> (
+      <Picker.Item value={item} key={item} label={item} color='#04303d'/>
+    ))
+  }
 
   console.log(pickerValue);
 
@@ -81,7 +82,7 @@ const GenderPicker = ({getGender, value}) => {
           Gender
         </Text>
 
-        <Pressable onPressIn={toggleModal}>
+        <Pressable onPress={toggleModal}>
           <View style={picker.inputBox} pointerEvents='none'>
             <TextInput
               style={picker.textInput}
@@ -94,10 +95,24 @@ const GenderPicker = ({getGender, value}) => {
           </View>
         </Pressable>
 
-      {/* <View  isVisible={isModalVisible}>
+        <ModalPicker
+          visible={isModalVisible}
+          onRequestClose={() => setModalVisible(!isModalVisible)}
+          onPressIn={() => setModalVisible(!isModalVisible)}
+          onPress={() => setModalVisible(true)}
+          label={'gender'}
+        />
+
+
+      {/* <View isVisible={isModalVisible}>
         <ModalPicker
           // onPressIn={toggleModal}
-          // isVisible={isModalVisible}
+          isVisible={isModalVisible}
+          transparent={true}
+          onRequestClose={()=> {
+            Alert.alert('Modal is closed');
+            setModalVisible(!isModalVisible);
+          }}
           items={pickerItems}
           // onChangeText={() => pickerValue}
           label='Gender'
@@ -112,7 +127,7 @@ const GenderPicker = ({getGender, value}) => {
         />
       </View> */}
 
-        <Modal isVisible={isModalVisible}>
+        {/* <Modal isVisible={isModalVisible}>
           <View style={picker.container}>
             <View style={picker.pickerContainer}>
               <View style={picker.header}>
@@ -151,7 +166,7 @@ const GenderPicker = ({getGender, value}) => {
               </Picker>
             </View>
           </View>
-        </Modal>
+        </Modal> */}
 
       </View>
     </TouchableOpacity>
