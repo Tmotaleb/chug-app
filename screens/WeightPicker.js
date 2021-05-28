@@ -12,17 +12,18 @@ import {personalCSS, picker} from '../components/style';
 import {Picker} from '@react-native-picker/picker';
 import Modal from 'react-native-modal';
 import Icon from 'react-native-vector-icons/MaterialIcons';
+import ModalPicker from './ModalPicker';
 
-const WeightPicker = ({value, getWeight}) => {
+const WeightPicker = ({value, getWeight, visible, onRequestClose, onPressIn, onPress, label, onCheck, selectedValue, onValueChange, itemDetails}) => {
 
   const [isModalVisible, setModalVisible] = useState(false);
   const [pickerValue, setPickerValue] = useState('');
 
   console.log(getWeight, 'weight')
 
-  const items =[];
+  const pickerItems =[];
   for (var i = 40; i <= 500; i++) {
-    items.push(i.toString() + ' lb')
+    pickerItems.push(i.toString() + ' lb')
   }
 
   const weightInfo = () => {
@@ -48,6 +49,11 @@ const WeightPicker = ({value, getWeight}) => {
     }
   }, [value]);
 
+  const itemMapper = (items) => {
+    return items.map((item)=> (
+      <Picker.Item value={item} key={item} label={item}/>
+    ))
+  }
 
   return (
     <TouchableOpacity onPress={toggleModal}>
@@ -55,10 +61,12 @@ const WeightPicker = ({value, getWeight}) => {
         <View style={picker.imgContainer}>
           <Image source={require('../assets/images/onboarding-img3.png')} style={picker.img}/>
         </View>
-        <Text
-          style={personalCSS.parameters_text}>
-          Weight
-        </Text>
+        <View style={personalCSS.parametersText_box}>
+          <Text
+            style={personalCSS.parameters_text}>
+            Weight
+          </Text>
+        </View>
 
         <Pressable onPress={toggleModal}>
             <View style={picker.inputBox} pointerEvents='none'>
@@ -73,7 +81,24 @@ const WeightPicker = ({value, getWeight}) => {
             </View>
           </Pressable>
 
-        <Modal isVisible={isModalVisible}>
+
+        <ModalPicker
+          visible={isModalVisible}
+          onRequestClose={() => setModalVisible(!isModalVisible)}
+          onPressIn={() => setModalVisible(!isModalVisible)}
+          onPress={() => setModalVisible(true)}
+          label={'Weight'}
+          selectedValue={pickerValue}
+          onValueChange={(value)=> setPickerValue(value)}
+          itemDetails={itemMapper(pickerItems)}
+          onPressIn={() => {
+            onSelect(pickerValue);
+            setModalVisible(!isModalVisible);
+            weightInfo()
+          }}
+        />
+
+        {/* <Modal isVisible={isModalVisible}>
           <View style={picker.container}>
             <View style={picker.pickerContainer}>
               <View style={picker.header}>
@@ -112,7 +137,7 @@ const WeightPicker = ({value, getWeight}) => {
               </Picker>
             </View>
           </View>
-        </Modal>
+        </Modal> */}
 
       </View>
     </TouchableOpacity>

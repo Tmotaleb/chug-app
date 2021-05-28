@@ -97,9 +97,17 @@ const personalCSS = StyleSheet.create({
     marginTop: 20
 
   },
+  parametersText_box : {
+
+    alignSelf: 'center',
+    width: '45%',
+    alignItems: 'center'
+  },
   parameters_text: {
     padding: 10,
     fontSize: 25,
+    fontWeight: '500',
+    // backgroundColor: 'pink'
   },
   // topShadow:{
   //   shadowOffset: {
@@ -167,20 +175,23 @@ const picker = StyleSheet.create({
     marginLeft: 5
   },
   inputBox: {
-    marginRight: 20,
+    // marginRight: 0,
     // borderWidth: 1,
     // borderColor: 'rgba(248,248,248, 0.8)'
+    alignSelf: 'flex-end',
 
+    // backgroundColor: 'blue'
   },
   textInput: {
     borderBottomWidth: 1,
     borderBottomColor: '#00CCFF',
     width: 90,
     height: 40,
-    borderRadius: 5,
+    // borderRadius: 5,
     textAlign: 'center',
     fontSize: 24,
-    color:'white'
+    color:'white',
+
   },
   switchBox: {
     marginRight: 25
@@ -188,6 +199,9 @@ const picker = StyleSheet.create({
   switch: {
     marginLeft: 5,
     transform:[{ scaleX: 1.1  }, { scaleY: 1.1 }]
+  },
+  pickerItems: {
+    color: 'pink'
   }
 })
 

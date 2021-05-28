@@ -38,10 +38,12 @@ const PregnantPicker = ({value, getPregnancyInfo}) => {
       <View style={picker.imgContainer}>
         <Image source={require('../assets/images/onboarding-img3.png')} style={picker.img}/>
       </View>
-        <Text
-          style={personalCSS.parameters_text}>
-          Pregnant
-        </Text>
+      <View style={personalCSS.parametersText_box}>
+          <Text
+            style={personalCSS.parameters_text}>
+            Pregnant
+          </Text>
+        </View>
         <View style={picker.switchBox} >
           <Switch
             trackColor={{ false: "#f4f3f4", true: '#2596be' }}

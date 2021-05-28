@@ -7,19 +7,22 @@ import {
   Image,
   Pressable,
   StyleSheet,
+  Modal,
   TextInput,
   Button} from 'react-native';
 import {personalCSS} from '../components/style';
 import {Picker} from '@react-native-picker/picker';
-import Modal from 'react-native-modal';
-import Icon from 'react-native-vector-icons/MaterialIcons';
+// import Modal from 'react-native-modal';
+// import Icon from 'react-native-vector-icons/MaterialIcons';
 import {picker} from '../components/style';
+import ModalPicker from './ModalPicker';
 
-const AgePicker = ({value, key}) => {
-  const items =[];
+const AgePicker = ({value, visible, onRequestClose, onPressIn, onPress, label, onCheck, selectedValue, onValueChange, itemDetails}) => {
+
+  const pickerItems =[];
 
   for (var i = 4; i <= 100; i++) {
-    items.push(i.toString())
+    pickerItems.push(i.toString())
   }
 
   const [isModalVisible, setModalVisible] = useState(false);
@@ -40,16 +43,25 @@ const AgePicker = ({value, key}) => {
     }
   }, [value]);
 
+  const itemMapper = (items) => {
+    return items.map((item)=> (
+      <Picker.Item value={item} key={item} label={item}/>
+    ))
+  }
+
   return (
     <TouchableOpacity onPress={toggleModal}>
       <View style={personalCSS.parameters_view} >
         <View style={picker.imgContainer}>
           <Image source={require('../assets/images/onboarding-img3.png')} style={picker.img}/>
         </View>
-        <Text
-          style={personalCSS.parameters_text}>
-          Age
-        </Text>
+
+        <View style={personalCSS.parametersText_box}>
+          <Text
+            style={personalCSS.parameters_text}>
+            Age
+          </Text>
+        </View>
 
         <Pressable onPress={toggleModal}>
             <View style={picker.inputBox} pointerEvents='none'>
@@ -64,7 +76,22 @@ const AgePicker = ({value, key}) => {
             </View>
           </Pressable>
 
-        <Modal isVisible={isModalVisible}>
+        <ModalPicker
+          visible={isModalVisible}
+          onRequestClose={() => setModalVisible(!isModalVisible)}
+          onPressIn={() => setModalVisible(!isModalVisible)}
+          onPress={() => setModalVisible(true)}
+          label={'Age'}
+          selectedValue={pickerValue}
+          onValueChange={(value)=> setPickerValue(value)}
+          itemDetails={itemMapper(pickerItems)}
+          onPressIn={() => {
+            onSelect(pickerValue);
+            setModalVisible(!isModalVisible);
+          }}
+        />
+
+        {/* <Modal isVisible={isModalVisible}>
           <View style={picker.container}>
             <View style={picker.pickerContainer}>
               <View style={picker.header}>
@@ -102,7 +129,7 @@ const AgePicker = ({value, key}) => {
               </Picker>
             </View>
           </View>
-        </Modal>
+        </Modal> */}
       </View>
     </TouchableOpacity>
   )

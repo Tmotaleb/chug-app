@@ -20,9 +20,7 @@ import {picker} from '../components/style';
 import { Ionicons } from '@expo/vector-icons';
 import ModalPicker from './ModalPicker';
 
-const GenderPicker = ({value, getGender, visible, onRequestClose, onPressIn, onPress, label, onCheck}) => {
-
-  // toggleModal, onSelect, onChange, label, selectedValue, isVisible, items, onValueChange, onPress, onPressIn, itemMapper}
+const GenderPicker = ({value, getGender, visible, onRequestClose, onPressIn, onPress, label, onCheck, selectedValue, onValueChange, itemDetails}) => {
 
   console.log(getGender, 'show')
 
@@ -64,23 +62,24 @@ const GenderPicker = ({value, getGender, visible, onRequestClose, onPressIn, onP
 
   const itemMapper = (items) => {
     return items.map((item)=> (
-      <Picker.Item value={item} key={item} label={item} color='#04303d'/>
+      <Picker.Item value={item} key={item} label={item}/>
     ))
   }
 
   console.log(pickerValue);
 
   return (
-
     <TouchableOpacity onPressIn={toggleModal}>
       <View style={personalCSS.parameters_view} >
         <View style={picker.imgContainer}>
           {renderImage()}
         </View>
-        <Text
-          style={personalCSS.parameters_text}>
-          Gender
-        </Text>
+        <View style={personalCSS.parametersText_box}>
+          <Text
+            style={personalCSS.parameters_text}>
+            Gender
+          </Text>
+        </View>
 
         <Pressable onPress={toggleModal}>
           <View style={picker.inputBox} pointerEvents='none'>
@@ -100,73 +99,16 @@ const GenderPicker = ({value, getGender, visible, onRequestClose, onPressIn, onP
           onRequestClose={() => setModalVisible(!isModalVisible)}
           onPressIn={() => setModalVisible(!isModalVisible)}
           onPress={() => setModalVisible(true)}
-          label={'gender'}
-        />
-
-
-      {/* <View isVisible={isModalVisible}>
-        <ModalPicker
-          // onPressIn={toggleModal}
-          isVisible={isModalVisible}
-          transparent={true}
-          onRequestClose={()=> {
-            Alert.alert('Modal is closed');
-            setModalVisible(!isModalVisible);
-          }}
-          items={pickerItems}
-          // onChangeText={() => pickerValue}
-          label='Gender'
+          label={'Gender'}
           selectedValue={pickerValue}
           onValueChange={(value)=> setPickerValue(value)}
-          onPress={()=> {
+          itemDetails={itemMapper(pickerItems)}
+          onPressIn={() => {
             onSelect(pickerValue);
-            toggleModal();
-            // weightInfo()
+            setModalVisible(!isModalVisible);
+            genderInfo()
           }}
-          itemContainer={itemMapper(pickerItems)}
         />
-      </View> */}
-
-        {/* <Modal isVisible={isModalVisible}>
-          <View style={picker.container}>
-            <View style={picker.pickerContainer}>
-              <View style={picker.header}>
-                <TouchableOpacity onPress={toggleModal}>
-                  <Icon
-                    name='close'
-                    size={30}
-                    color='grey'/>
-                </TouchableOpacity>
-
-                <Text
-                  style={picker.txt}>
-                  Gender
-                </Text>
-
-                <TouchableOpacity
-                  onPress={()=> {
-                    onSelect(pickerValue);
-                    toggleModal();
-                    genderInfo()
-                    }}>
-                  <Icon
-                    name='done'
-                    size={30}
-                    color='grey'/>
-                </TouchableOpacity>
-              </View>
-
-              <Picker
-                selectedValue={pickerValue}
-                onValueChange={(value)=> setPickerValue(value)}
-              >
-                {items.map((item)=> (
-                  <Picker.Item value={item} key={item} label={item} color='#04303d'/>
-                ))}
-              </Picker>
-            </View>
-          </View>
-        </Modal> */}
 
       </View>
     </TouchableOpacity>

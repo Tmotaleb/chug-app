@@ -15,7 +15,7 @@ import {Picker} from '@react-native-picker/picker';
 // import Modal from 'react-native-modal';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 
-const ModalPicker = ({value, visible, onRequestClose, onPressIn, onPress, label, onCheck}) => {
+const ModalPicker = ({value, visible, onRequestClose, onPressIn, onPress, label, onCheck, selectedValue, onValueChange, itemDetails}) => {
 
   const [isModalVisible, setModalVisible] = useState(false);
   const [pickerValue, setPickerValue] = useState('');
@@ -57,8 +57,6 @@ const ModalPicker = ({value, visible, onRequestClose, onPressIn, onPress, label,
   // }
 
   return (
-
-
     <View >
       <Modal
         animationType='slide'
@@ -66,22 +64,15 @@ const ModalPicker = ({value, visible, onRequestClose, onPressIn, onPress, label,
         visible={visible}
         onRequestClose={()=> {
           Alert.alert('Modal closed');
-          // setModalVisible(!isModalVisible);
           onRequestClose
         }}
       >
         <View style={styles.centeredView}>
           <View style={styles.modalView}>
-            {/* <Text style={styles.modalText}>{label=label}</Text> */}
-
             <View style={styles.header}>
-               {/* close button */}
               <Pressable
-                style={[styles.button, styles.buttonClose]}
                 onPressIn={onPressIn}
-                // onPressIn={() => setModalVisible(!isModalVisible)}
               >
-                {/* <Text style={styles.textStyle}>Hide Modal</Text> */}
                 <Icon
                   name='close'
                   size={30}
@@ -91,91 +82,30 @@ const ModalPicker = ({value, visible, onRequestClose, onPressIn, onPress, label,
 
               <Text style={styles.modalText}>{label=label}</Text>
 
-              <Pressable
-                onCheck={onCheck}
+              <TouchableOpacity
+                onPressIn={onPressIn}
               >
                 <Icon
                   name='done'
                   size={30}
-                  color='grey'/>
-
-
-              </Pressable>
+                  color='grey'
+                />
+              </TouchableOpacity>
 
             </View>
 
-
-
-
-
-
-
-
-
+            <Picker
+            selectedValue={selectedValue}
+            onValueChange={onValueChange}
+            itemStyle={{color:'#194d82', fontWeight:'400', fontSize: '25'}}
+            >
+            {itemDetails=itemDetails}
+            </Picker>
 
           </View>
         </View>
       </Modal>
-
-      {/* <Pressable
-        style={[styles.button, styles.buttonOpen]}
-        // onPress={() => setModalVisible(true)}
-        onPress={onPress}
-      >
-      <Text style={styles.textStyle}>Show Modal</Text>
-
-      </Pressable> */}
-
     </View>
-    // <View>
-    //   <Pressable onPressIn={onPressIn}>
-    //     <View style={picker.inputBox} pointerEvents='none'>
-    //       <TextInput
-    //         style={picker.textInput}
-    //         placeholderTextColor='#2596be'
-    //         placeholder={pickerValue}
-    //         onChangeText={onChangeText}
-    //         caretHidden={true}
-    //         editable={false}
-    //         />
-    //     </View>
-    //   </Pressable>
-
-      // <Modal isVisible={isVisible}>
-      //   <View style={picker.container}>
-      //     <View style={picker.pickerContainer}>
-      //       <View style={picker.header}>
-      //         <TouchableOpacity onPressIn={onPressIn}>
-      //           <Icon
-      //             name='close'
-      //             size={30}
-      //             color='grey'/>
-      //         </TouchableOpacity>
-
-      //         <Text
-      //           style={picker.txt}>
-      //           {label=label}
-      //         </Text>
-
-      //         <TouchableOpacity
-      //           onPress={onPress}>
-      //           <Icon
-      //             name='done'
-      //             size={30}
-      //             color='grey'/>
-      //         </TouchableOpacity>
-      //       </View>
-
-      //       <Picker
-      //         selectedValue={selectedValue}
-      //         onValueChange={onValueChange}
-      //       >
-      //         {itemContainer = itemContainer}
-      //       </Picker>
-      //     </View>
-      //   </View>
-      // </Modal>
-
   )
 }
 
@@ -184,16 +114,17 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: "center",
     alignItems: "center",
-    marginTop: 22,
+    backgroundColor:'rgba(52, 52, 52, 0.9)',
+    // marginTop: 22,
   },
   modalView: {
     margin: 20,
-    height: 400,
+    height: 350,
     width: 350,
-    backgroundColor: "pink",
+    backgroundColor: "white",
     borderRadius: 20,
-    padding: 20,
-    alignItems: "center",
+    // padding: 5,
+    // alignItems: "center",
     shadowColor: "#000",
     shadowOffset: {
       width: 0,
@@ -206,16 +137,17 @@ const styles = StyleSheet.create({
   header: {
     justifyContent: 'space-between',
     flexDirection: 'row',
+    margin: 5,
     alignItems: 'center',
     backgroundColor: 'transparent',
+    backgroundColor: 'white',
     padding: 10,
-    borderBottomColor: 'grey',
+    borderTopRightRadius: 20,
+    borderTopLeftRadius: 20,
+    borderBottomColor: 'lightgrey',
     borderBottomWidth: 2,
     color: 'white'
   },
-
-
-
 
   button: {
     borderRadius: 25,
@@ -226,7 +158,7 @@ const styles = StyleSheet.create({
     backgroundColor: "#F194FF",
   },
   buttonClose: {
-    backgroundColor: "white",
+    backgroundColor: "lightgrey",
   },
   textStyle: {
     color: "white",
@@ -235,7 +167,13 @@ const styles = StyleSheet.create({
   },
   modalText: {
     marginBottom: 15,
-    textAlign: "center"
+    textAlign: "center",
+    fontSize: 25,
+    fontWeight: 'bold',
+    color: '#04303d'
+  },
+  pickerItems: {
+    color:'pink'
   }
 });
 

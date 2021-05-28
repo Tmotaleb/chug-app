@@ -15,11 +15,13 @@ import Modal from 'react-native-modal';
 import { NeuInput, NeuView } from 'react-native-neu-element';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import {picker} from '../components/style';
+import ModalPicker from './ModalPicker';
 
-const ActivityPicker = ({value, getActivity}) => {
+const ActivityPicker = ({value, getActivity, visible, onRequestClose, onPressIn, onPress, label, onCheck, selectedValue, onValueChange, itemDetails}) => {
+
   console.log(getActivity)
 
-  const items =['Just Sleep', '30 min/week', '1 hour/week', '2 hour/week', '3 hour/week', '4+ hour/week'];
+  var items =['Just Sleep', '30 min/week', '1 hour/week', '2 hour/week', '3 hour/week', '4+ hour/week'];
 
   const [isModalVisible, setModalVisible] = useState(false);
   const [pickerValue, setPickerValue] = useState('');
@@ -43,16 +45,24 @@ const ActivityPicker = ({value, getActivity}) => {
     }
   }, [value]);
 
+  const itemMapper = (items) => {
+    return items.map((item)=> (
+      <Picker.Item value={item} key={item} label={item}/>
+    ))
+  }
+
   return (
     <TouchableOpacity onPress={toggleModal} key={items.key}>
     <View style={personalCSS.parameters_view} >
       <View style={picker.imgContainer}>
         <Image source={require('../assets/images/onboarding-img3.png')} style={picker.img}/>
       </View>
-      <Text
-        style={personalCSS.parameters_text}>
-        Activity
-      </Text>
+      <View style={personalCSS.parametersText_box}>
+          <Text
+            style={personalCSS.parameters_text}>
+            Activity
+          </Text>
+        </View>
 
         <Pressable onPress={toggleModal}>
           <View style={picker.inputBox} pointerEvents='none'>
@@ -67,7 +77,23 @@ const ActivityPicker = ({value, getActivity}) => {
           </View>
         </Pressable>
 
-      <Modal isVisible={isModalVisible}>
+        <ModalPicker
+          visible={isModalVisible}
+          onRequestClose={() => setModalVisible(!isModalVisible)}
+          onPressIn={() => setModalVisible(!isModalVisible)}
+          onPress={() => setModalVisible(true)}
+          label={'Activity'}
+          selectedValue={pickerValue}
+          onValueChange={(value)=> setPickerValue(value)}
+          itemDetails={itemMapper(items)}
+          onPressIn={() => {
+            onSelect(pickerValue);
+            setModalVisible(!isModalVisible);
+            activityInfo();
+          }}
+        />
+
+      {/* <Modal isVisible={isModalVisible}>
         <View style={picker.container}>
           <View style={picker.pickerContainer}>
             <View style={picker.header}>
@@ -106,7 +132,7 @@ const ActivityPicker = ({value, getActivity}) => {
             </Picker>
           </View>
         </View>
-      </Modal>
+      </Modal> */}
     </View>
   </TouchableOpacity>
   )
