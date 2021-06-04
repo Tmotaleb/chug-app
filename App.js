@@ -6,7 +6,9 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import HomePage from './screens/HomePage';
-import OnBoardingScreen from './screens/OnBoardingScreen';
+import OnBoardingScreen1 from './screens/OnBoardingScreen1';
+import OnBoardingScreen2 from './screens/OnBoardingScreen2';
+import OnBoardingScreen3 from './screens/OnBoardingScreen3';
 import PersonalParameters from './screens/PersonalParameters';
 import PersonalIntake from './screens/PersonalIntake';
 
@@ -50,7 +52,9 @@ export default function App() {
         <AppStack.Navigator
           headerMode='none'
         >
-          <AppStack.Screen name='OnboardingScreen' component={OnBoardingScreen}/>
+          <AppStack.Screen name='OnBoardingScreen1' component={OnBoardingScreen1}/>
+          <AppStack.Screen name='OnBoardingScreen2' component={OnBoardingScreen2}/>
+          <AppStack.Screen name='OnBoardingScreen3' component={OnBoardingScreen3}/>
           <AppStack.Screen name='PersonalInfo' component={PersonalParameters}/>
           <AppStack.Screen name='PersonalIntake' component={PersonalIntake}/>
 

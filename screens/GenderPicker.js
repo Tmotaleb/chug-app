@@ -6,7 +6,6 @@ import {
   TouchableOpacity,
   Image,
   Pressable,
-  StyleSheet,
   TextInput,
   Alert,
   DismissKeyboard,
@@ -14,10 +13,7 @@ import {
 import {personalCSS} from '../components/style';
 import {Picker} from '@react-native-picker/picker';
 import Modal from 'react-native-modal';
-// import { NeuInput, NeuView } from 'react-native-neu-element';
-import Icon from 'react-native-vector-icons/MaterialIcons';
 import {picker} from '../components/style';
-import { Ionicons } from '@expo/vector-icons';
 import ModalPicker from './ModalPicker';
 
 const GenderPicker = ({value, getGender, visible, onRequestClose, onPressIn, onPress, label, onCheck, selectedValue, onValueChange, itemDetails}) => {

@@ -34,6 +34,36 @@ const OnBoardingScreen = ({navigation}) => {
     )
   }
 
+  const onboardingTitle = () => {
+    return (
+      <View style={styles.titleBox}>
+        <Text style={styles.title}>Hydrate</Text>
+      </View>
+    )
+  }
+
+  const onboardingSubtitle = () => {
+    return (
+      <View style={styles.subtitleBox}>
+        <Text style={styles.subtitle}>The quest for hydration is very simple.</Text>
+        <Text style={styles.subtitle}>Give your body the balance it needs to maintain itself.</Text>
+      </View>
+    )
+  }
+
+  const onboardingImage = () => {
+    return (
+      <View style={styles.imageBox}>
+        <View style={styles.imageBox1}>
+
+          <Image
+            style={styles.image}
+            source={require('../assets/images/girl-drink.jpeg')}
+          />
+        </View>
+      </View>
+    )
+  }
 
   return (
     <Onboarding
@@ -50,10 +80,10 @@ const OnBoardingScreen = ({navigation}) => {
     onDone={()=> navigation.navigate('PersonalInfo')}
     pages={[
       {
-        backgroundColor: 'pink',
-        image: <Image source={require('../assets/images/onboarding-img1.png')} />,
-        title: 'Onboarding',
-        subtitle: 'Done with React Native Onboarding Swiper',
+        backgroundColor: '#1e5490',
+        image: onboardingImage(),
+        title: onboardingTitle(),
+        subtitle: onboardingSubtitle(),
       },
       {
         backgroundColor: 'lightblue',
@@ -72,6 +102,60 @@ const OnBoardingScreen = ({navigation}) => {
   />
   );
 }
+
+
+const styles = StyleSheet.create ({
+  titleBox: {
+    position: 'absolute',
+    top: 80,
+    left: 0,
+    right: 0,
+    bottom: 0,
+    justifyContent: 'flex-start',
+    alignItems: 'center'
+    // // color: 'white',
+    // // fontSize: 25
+  },
+  title: {
+    color: 'white',
+    fontSize: 60,
+    fontFamily: 'Kailasa'
+    // transform: [{ rotate: '-90deg'}]
+  },
+  subtitleBox : {
+    position: 'absolute',
+    top: 160,
+    left: 0,
+    right: 0,
+    bottom: 0,
+    justifyContent: 'flex-start',
+    alignItems: 'center'
+  },
+  subtitle : {
+    color: 'white',
+    fontSize: 15,
+    fontFamily: 'Kailasa',
+    textAlign: 'justify',
+    marginHorizontal: 20
+  },
+  imageBox: {
+    // width: '20%',
+    height: '100%',
+    // resizeMode: 'contain'
+
+  },
+  imageBox1 : {
+
+    height: 200,
+
+  },
+  image: {
+
+    // width: "100%",
+    // height: "100%",
+  },
+
+})
 
 
 export default OnBoardingScreen;

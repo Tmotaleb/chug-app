@@ -5,13 +5,11 @@ import {
   TouchableOpacity,
   Image,
   Pressable,
-  StyleSheet,
   TextInput,
   Button} from 'react-native';
 import {personalCSS, picker} from '../components/style';
 import {Picker} from '@react-native-picker/picker';
 import Modal from 'react-native-modal';
-import Icon from 'react-native-vector-icons/MaterialIcons';
 import ModalPicker from './ModalPicker';
 
 const WeightPicker = ({value, getWeight, visible, onRequestClose, onPressIn, onPress, label, onCheck, selectedValue, onValueChange, itemDetails}) => {
@@ -97,47 +95,6 @@ const WeightPicker = ({value, getWeight, visible, onRequestClose, onPressIn, onP
             weightInfo()
           }}
         />
-
-        {/* <Modal isVisible={isModalVisible}>
-          <View style={picker.container}>
-            <View style={picker.pickerContainer}>
-              <View style={picker.header}>
-                <TouchableOpacity onPress={toggleModal}>
-                  <Icon
-                    name='close'
-                    size={30}
-                    color='grey'/>
-                </TouchableOpacity>
-
-                <Text
-                  style={picker.txt}>
-                  Weight
-                </Text>
-
-                <TouchableOpacity
-                  onPress={()=> {
-                    onSelect(pickerValue);
-                    toggleModal();
-                    weightInfo()
-                    }}>
-                  <Icon
-                    name='done'
-                    size={30}
-                    color='grey'/>
-                </TouchableOpacity>
-              </View>
-
-              <Picker
-                selectedValue={pickerValue}
-                onValueChange={(value)=> setPickerValue(value)}
-              >
-                {items.map((item)=> (
-                  <Picker.Item value={item} key={item} label={item} color='#04303d'/>
-                ))}
-              </Picker>
-            </View>
-          </View>
-        </Modal> */}
 
       </View>
     </TouchableOpacity>

@@ -12,49 +12,12 @@ import {
   Button} from 'react-native';
 import {personalCSS, picker} from '../components/style';
 import {Picker} from '@react-native-picker/picker';
-// import Modal from 'react-native-modal';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 
 const ModalPicker = ({value, visible, onRequestClose, onPressIn, onPress, label, onCheck, selectedValue, onValueChange, itemDetails}) => {
 
   const [isModalVisible, setModalVisible] = useState(false);
   const [pickerValue, setPickerValue] = useState('');
-
-  // console.log(getWeight, 'weight')
-
-  // const items =[];
-  // for (var i = 40; i <= 500; i++) {
-  //   items.push(i.toString() + ' lb')
-  // }
-
-  // const weightInfo = () => {
-  //   getWeight(pickerValue, 'childWeight')
-  // }
-
-  // toggleModal = () => {
-  //   setModalVisible(!isModalVisible);
-  // };
-
-  // onSelect = (value) => {
-  //   console.log(value)
-  //   setPickerValue(value)
-  // };
-
-  // const onChange = (value) => {
-  //   setPickerValue(value)
-  // };
-
-  // useEffect(()=> {
-  //   if (value) {
-  //     setPickerValue(value)
-  //   }
-  // }, [value]);
-
-  // itemMapper = (items) => {
-  //   return items.map((item)=> (
-  //     <Picker.Item value={item} key={item} label={item} color='#04303d'/>
-  //   ))
-  // }
 
   return (
     <View >
