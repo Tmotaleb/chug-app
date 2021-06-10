@@ -26,27 +26,26 @@ const OnBoardingScreen1 = ({navigation}) => {
 
       <ImageBackground
         source={require("../assets/images/girl-drink2.jpeg")}
-        style={styles.box1}
-        // imageStyle={{resizeMode: 'contain'}}
+        style={styles.image}
+        // imageStyle={{resizeMode: 'cover'}}
       >
         <View style={styles.titleBox}>
           <Text style={styles.title}>HYDRATE</Text>
         </View>
 
-        {/* <View style={styles.subtitleBox}>
-          <Text style={styles.subtitle}>The quest for hydration is very simple.</Text>
-          <Text style={styles.subtitle}>Give your body the balance it needs to maintain itself.</Text>
-        </View> */}
+        <View style={styles.subtitleBox}>
+          <Text style={[styles.subtitle, {marginBottom: 3, fontSize: 20}]}>The quest for hydration is very simple.</Text>
+          <Text style={[styles.subtitle, {fontSize:15}]}>Give your body the balance it needs to maintain itself.</Text>
+        </View>
+
+        <View style={styles.bottomBar}>
+          <TouchableOpacity style={styles.nextButton} onPress={()=> navigation.navigate('OnBoardingScreen2')}>
+            <Text style={styles.nextText}>Next</Text>
+          </TouchableOpacity>
+        </View>
+
       </ImageBackground>
 
-
-      <View style={styles.box2}></View>
-
-      <View style={styles.bottomBar}>
-        <TouchableOpacity style={{alignSelf: 'flex-end', padding: 20}} onPress={()=> navigation.navigate('OnBoardingScreen2')}>
-          <Text style={{color: 'black', fontSize: 18}}>Next</Text>
-        </TouchableOpacity>
-      </View>
     </View>
 
   )
@@ -59,26 +58,31 @@ const styles = StyleSheet.create ({
     // alignItems: 'center',
     // flexDirection: "column"
   },
-  box1: {
-    // flex:1,
-    // height: 800,
-    // // backgroundColor: 'pink',
-    resizeMode: "cover",
-    // justifyContent: "center",
-    height: 800,
+  image: {
+    justifyContent: "flex-end",
+    height: '100%',
     width: '100%'
   },
  bottomBar: {
-   height: 60
+  height: 90,
+  backgroundColor: 'rgba(0,0,0, 0.2)'
+ },
+ nextButton: {
+  alignSelf: 'flex-end',
+  padding: 20
+ },
+ nextText: {
+  color: 'white',
+  fontSize: 20,
+  opacity: 1.0
  },
 
   titleBox: {
   position: 'absolute',
   top: 0,  //80
-  left: 15,
-  right: 380,
-  bottom: 195,
-  // backgroundColor: 'pink',
+  left: 18,
+  right: 350,
+  bottom: 140,
   justifyContent: "center",
 
   alignItems: 'center'
@@ -87,26 +91,30 @@ const styles = StyleSheet.create ({
   },
   title: {
     color: 'white',
-    fontSize: 50,
+    fontSize: 54,
     fontWeight: 'bold',
     fontFamily: 'Kailasa',
     // transform: [{ rotate: '-90deg'}]
   },
   subtitleBox : {
     position: 'absolute',
-    top: 160,
-    left: 0,
+    top: 0, //190
+    left: 0,  //120
     right: 0,
     bottom: 0,
     justifyContent: 'flex-start',
-    alignItems: 'center'
+    // justifyContent: 'space-between',
+    alignItems: 'center',
+    marginTop:70
+    // backgroundColor: 'black'
   },
   subtitle : {
     color: 'white',
-    fontSize: 15,
-    fontFamily: 'Kailasa',
+    // fontWeight: '500',
+    // fontSize: 20,
+    fontFamily: 'HoeflerText',
     textAlign: 'justify',
-    marginHorizontal: 20
+    marginHorizontal: 35
   },
 })
 
