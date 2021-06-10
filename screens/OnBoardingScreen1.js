@@ -10,6 +10,7 @@ import {
   Picker,
   StyleSheet,
   ImageBackground,
+  Dimensions,
   ScrollView,
   Pressable,
   TextInput } from 'react-native';
@@ -18,7 +19,6 @@ import { createStackNavigator } from '@react-navigation/stack';
 import {intakeCSS, personalCSS, picker, personalIntake} from '../components/style';
 
 const OnBoardingScreen1 = ({navigation}) => {
-
 
 
   return (
@@ -34,8 +34,8 @@ const OnBoardingScreen1 = ({navigation}) => {
         </View>
 
         <View style={styles.subtitleBox}>
-          <Text style={[styles.subtitle, {marginBottom: 3, fontSize: 20}]}>The quest for hydration is very simple.</Text>
-          <Text style={[styles.subtitle, {fontSize:15}]}>Give your body the balance it needs to maintain itself.</Text>
+          <Text style={[styles.subtitle, {marginBottom: 3, fontSize: 20}]}>The quest for hydration is very simple</Text>
+          <Text style={[styles.subtitle, {fontSize:15}]}>Give your body the balance it needs to maintain itself</Text>
         </View>
 
         <View style={styles.bottomBar}>
@@ -50,6 +50,10 @@ const OnBoardingScreen1 = ({navigation}) => {
 
   )
 }
+
+const height = Dimensions.get('window').height;
+const width = Dimensions.get('window').width;
+
 
 const styles = StyleSheet.create ({
   container: {
@@ -81,8 +85,8 @@ const styles = StyleSheet.create ({
   position: 'absolute',
   top: 0,  //80
   left: 18,
-  right: 350,
-  bottom: 140,
+  right: width-70,
+  bottom: height-850, //140
   justifyContent: "center",
 
   alignItems: 'center'
@@ -94,6 +98,10 @@ const styles = StyleSheet.create ({
     fontSize: 54,
     fontWeight: 'bold',
     fontFamily: 'Kailasa',
+
+    textShadowColor: 'rgba(0, 0, 0, 0.4)',
+    textShadowOffset: {width: 0.1, height: 0.1},
+    textShadowRadius: 0.3,
     // transform: [{ rotate: '-90deg'}]
   },
   subtitleBox : {
@@ -105,7 +113,7 @@ const styles = StyleSheet.create ({
     justifyContent: 'flex-start',
     // justifyContent: 'space-between',
     alignItems: 'center',
-    marginTop:70
+    marginTop:90
     // backgroundColor: 'black'
   },
   subtitle : {
@@ -114,7 +122,7 @@ const styles = StyleSheet.create ({
     // fontSize: 20,
     fontFamily: 'HoeflerText',
     textAlign: 'justify',
-    marginHorizontal: 35
+    marginHorizontal: 30
   },
 })
 
