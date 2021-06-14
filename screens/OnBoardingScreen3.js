@@ -8,31 +8,58 @@ import {
   Switch,
   Image,
   Picker,
+  StyleSheet,
   ImageBackground,
+  Dimensions,
   ScrollView,
   Pressable,
   TextInput } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
-import {intakeCSS, personalCSS, picker, personalIntake} from '../components/style';
+import {onboardingScreenStyles} from '../components/style';
 
 const OnBoardingScreen3 = ({navigation}) => {
 
+  const OBheight = Dimensions.get('window').height;
+const OBwidth = Dimensions.get('window').width;
 
   return (
-    <SafeAreaView style={intakeCSS.container}>
+    <View style={onboardingScreenStyles.container}>
+      <ImageBackground
+        source={require("../assets/images/water-leaf.png")}
+        style={onboardingScreenStyles.image}
+      >
+        <View style={{
+          position: 'absolute',
+          top: 0,  //80
+          left: 0,
+          right: OBwidth-70,
+          bottom: OBheight-950, //140
+          justifyContent: "center",
+          alignItems: 'center',
+          alignSelf: 'center',
+          marginLeft: 30,
+          textAlignVertical: "center",
+          // backgroundColor: 'pink'
+          }}
+        >
+          <Text style={onboardingScreenStyles.title}>REPLENISH</Text>
+        </View>
 
-    <View>
-      <Text>Hello3</Text>
+        <View style={onboardingScreenStyles.subtitleBox}>
+          <Text style={[onboardingScreenStyles.subtitle, {marginBottom: 3, fontSize: 25, textAlign: 'center'}]}>Drink to your health</Text>
+          <Text style={[onboardingScreenStyles.subtitle, {fontSize:15, marginHorizontal: 60, textAlign: 'center'}]}>Supply your body to regulate proper fluid levels and homeostasis</Text>
+        </View>
+
+        <View style={onboardingScreenStyles.bottomBar}>
+          <TouchableOpacity style={onboardingScreenStyles.nextButton} onPress={()=> navigation.navigate('PersonalInfo')}>
+            <Text style={onboardingScreenStyles.nextText}>Next</Text>
+          </TouchableOpacity>
+        </View>
+      </ImageBackground>
     </View>
-
-      <View style={intakeCSS.bottomBar}>
-        <TouchableOpacity style={{alignSelf: 'flex-end', padding: 20}} onPress={()=> navigation.navigate('PersonalInfo')}>
-          <Text style={{color: 'black', fontSize: 18}}>Next</Text>
-        </TouchableOpacity>
-      </View>
-    </SafeAreaView>
 
   )
 }
+
 export default OnBoardingScreen3;

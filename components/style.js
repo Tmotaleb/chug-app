@@ -304,6 +304,71 @@ const personalIntake = StyleSheet.create({
   }
 })
 
+const OBheight = Dimensions.get('window').height;
+const OBwidth = Dimensions.get('window').width;
 
-export {splash, boardingCSS, personalCSS, picker, intakeCSS, personalIntake};
+const onboardingScreenStyles = StyleSheet.create({
+  container: {
+    flex: 1,
+  },
+  image: {
+    justifyContent: "flex-end",
+    height: '100%',
+    width: '100%'
+  },
+  bottomBar: {
+    height: 90,
+    backgroundColor: 'rgba(0,0,0, 0.2)'
+  },
+  nextButton: {
+    alignSelf: 'flex-end',
+    padding: 20
+  },
+  nextText: {
+  color: 'white',
+  fontSize: 20,
+  opacity: 1.0
+  },
+
+  titleBox: {
+  position: 'absolute',
+  top: 0,  //80
+  left: 18,
+  right: OBwidth-70,
+  bottom: OBheight-850, //140
+  justifyContent: "center",
+  alignItems: 'center'
+  },
+  title: {
+  color: 'white',
+  fontSize: 54,
+  fontWeight: 'bold',
+  fontFamily: 'Kailasa',
+
+  textShadowColor: 'rgba(0, 0, 0, 0.4)',
+  textShadowOffset: {width: 0.1, height: 0.1},
+  textShadowRadius: 0.3,
+  // transform: [{ rotate: '-90deg'}]
+  },
+  subtitleBox : {
+  position: 'absolute',
+  top: 0, //190
+  left: 0,  //120
+  right: 0,
+  bottom: 0,
+  justifyContent: 'flex-start',
+  alignItems: 'center',
+  marginTop:90
+  },
+  subtitle : {
+  color: 'white',
+  fontWeight: '500',
+  fontFamily: 'PingFangSC-Thin',
+  textAlign: 'justify',
+  marginHorizontal: 30
+  }
+})
+
+
+export {splash, boardingCSS, personalCSS, picker, intakeCSS, personalIntake, onboardingScreenStyles};
 
