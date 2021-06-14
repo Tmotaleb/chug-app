@@ -109,7 +109,8 @@ const styles = StyleSheet.create({
     borderTopLeftRadius: 20,
     borderBottomColor: 'lightgrey',
     borderBottomWidth: 2,
-    color: 'white'
+    color: 'white',
+    // fontFamily: 'AvenirNext-Medium'
   },
 
   button: {
@@ -132,8 +133,9 @@ const styles = StyleSheet.create({
     marginBottom: 15,
     textAlign: "center",
     fontSize: 25,
-    fontWeight: 'bold',
-    color: '#04303d'
+    fontWeight: '600',
+    fontFamily:'AvenirNext-Medium',
+    color: '#2596be'
   },
   pickerItems: {
     color:'pink'

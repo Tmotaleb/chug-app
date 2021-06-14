@@ -44,7 +44,7 @@ const NameInput = ({value, getName}) => {
           Name
         </Text>
         <TextInput
-          style={{ borderBottomWidth: 1, borderBottomColor:'#00CCFF', color:'#2596be', fontSize:20, flex: 1, marginRight: 20}}
+          style={{ borderBottomWidth: 1, borderBottomColor:'#2596be', color:'#2596be', fontSize:20, flex: 1, marginRight: 20}}
           placeholder='Enter your first name...'
           onChangeText={value => setTextInput(value)}
         />

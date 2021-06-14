@@ -28,7 +28,7 @@ const personalCSS = StyleSheet.create({
   container: {
     flex: 1,
     justifyContent: 'center',
-    backgroundColor: '#e3f2fd'
+    backgroundColor: '#f5f6f8'
   },
 
   box1: {
@@ -88,12 +88,13 @@ const personalCSS = StyleSheet.create({
   },
   title: {
     fontSize: 30,
-    fontWeight: 'bold',
-    color:'#00CCFF',
+    // fontWeight: 'bold',
+    color:'#2596be',
     textAlign: "center",
-    textShadowColor: 'rgba(0, 0, 0, 0.1)',
-    textShadowOffset: {width: -1, height: 1},
-    textShadowRadius: 2,
+    fontFamily: 'AvenirNext-Medium',
+    // textShadowColor: 'rgba(0, 0, 0, 0.5)',
+    // textShadowOffset: {width: 0.5, height: 0},
+    // textShadowRadius: 1,
     marginTop: 20
 
   },
@@ -105,8 +106,9 @@ const personalCSS = StyleSheet.create({
   },
   parameters_text: {
     padding: 10,
-    fontSize: 25,
-    fontWeight: '500',
+    fontSize: 20,
+    // fontWeight: '500',
+    fontFamily: 'AvenirNext-Medium',
     // backgroundColor: 'pink'
   },
   // topShadow:{
@@ -184,7 +186,7 @@ const picker = StyleSheet.create({
   },
   textInput: {
     borderBottomWidth: 1,
-    borderBottomColor: '#00CCFF',
+    borderBottomColor: '#2596be',
     width: 90,
     height: 40,
     // borderRadius: 5,
